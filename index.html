@@ -1,0 +1,1449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Shivansh Goswami | Quantum Identity Hub</title>
+    
+    <!-- External Asset Matrix -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&family=Fira+Code:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* Global Design Architecture Variables */
+        :root {
+            --bg-ultra-black: #010103;
+            --bg-deep-space: #03030b;
+            --bg-cosmic-card: rgba(8, 8, 24, 0.6);
+            --bg-card-hover: rgba(14, 14, 42, 0.85);
+            --neon-cyan-core: #00f0ff;
+            --neon-blue-glow: #0066ff;
+            --neon-purple-matrix: #9d00ff;
+            --neon-pink-glitch: #ff007f;
+            --neon-amber-warning: #ffbd59;
+            --text-ultra-white: #ffffff;
+            --text-cosmic-silver: #cbd5e1;
+            --text-space-muted: #475569;
+            --border-neon-glow: rgba(0, 240, 255, 0.12);
+            --border-cosmic-line: rgba(255, 255, 255, 0.04);
+            --font-matrix-display: 'Orbitron', sans-serif;
+            --font-cosmic-body: 'Space Grotesk', sans-serif;
+            --font-terminal-code: 'Fira Code', monospace;
+            --quantum-box-shadow: 0 0 25px rgba(0, 240, 255, 0.15);
+            --speed-warp-transition: all 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        /* Core System Reset Protocols */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            outline: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+            background-color: var(--bg-ultra-black);
+        }
+
+        body {
+            background-color: var(--bg-ultra-black);
+            color: var(--text-cosmic-silver);
+            font-family: var(--font-cosmic-body);
+            overflow-x: hidden;
+            min-height: 100vh;
+            line-height: 1.7;
+        }
+
+        /* Custom Space Scrollbar Interface */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-ultra-black);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(
+                180deg, 
+                var(--neon-cyan-core), 
+                var(--neon-purple-matrix), 
+                var(--neon-pink-glitch)
+            );
+            border-radius: 20px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(
+                180deg, 
+                var(--neon-pink-glitch), 
+                var(--neon-cyan-core)
+            );
+        }
+
+        /* Core Canvas Engine Overlays */
+        .ambient-space-matrix {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -10;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .quantum-nebula-cluster {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(140px);
+            opacity: 0.35;
+            mix-blend-mode: screen;
+            animation: cosmicNebulaDrift 30s infinite alternate ease-in-out;
+        }
+
+        .nebula-node-alpha {
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(157,0,255,0.18) 0%, transparent 75%);
+            top: -15%;
+            left: -10%;
+        }
+
+        .nebula-node-beta {
+            width: 700px;
+            height: 700px;
+            background: radial-gradient(circle, rgba(0,240,255,0.14) 0%, transparent 75%);
+            bottom: -15%;
+            right: -10%;
+            animation-delay: -7s;
+        }
+
+        .nebula-node-gamma {
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(255,0,127,0.1) 0%, transparent 75%);
+            top: 50%;
+            left: 45%;
+            transform: translate(-50%, -50%);
+            animation-delay: -12s;
+        }
+
+        @keyframes cosmicNebulaDrift {
+            0% {
+                transform: scale(1) translate(0px, 0px) rotate(0deg);
+            }
+            50% {
+                transform: scale(1.1) translate(40px, -60px) rotate(90deg);
+            }
+            100% {
+                transform: scale(1.2) translate(-30px, 40px) rotate(180deg);
+            }
+        }
+
+        #starfield-canvas-core, 
+        #dust-particle-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        /* Immersive Cyber Loader Modules */
+        #cyber-mainframe-loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #010104;
+            z-index: 999999;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 0.9s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.9s;
+        }
+
+        .loader-interface-box {
+            text-align: center;
+            max-width: 500px;
+            width: 85%;
+            padding: 40px;
+            position: relative;
+        }
+
+        .loader-glitch-headline {
+            font-family: var(--font-matrix-display);
+            font-size: 2rem;
+            font-weight: 900;
+            letter-spacing: 6px;
+            color: var(--text-ultra-white);
+            text-transform: uppercase;
+            position: relative;
+            margin-bottom: 30px;
+            animation: structuralGlitchShake 3.5s infinite;
+        }
+
+        .loader-glitch-headline::before {
+            content: 'SHIVANSH GOSWAMI';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #010104;
+            left: 3px;
+            text-shadow: -3px 0 var(--neon-cyan-core);
+            clip: rect(44px, 450px, 56px, 0);
+            animation: structuralGlitchSliceAlpha 6s infinite linear alternate-reverse;
+        }
+
+        .loader-glitch-headline::after {
+            content: 'SHIVANSH GOSWAMI';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #010104;
+            left: -3px;
+            text-shadow: -3px 0 var(--neon-pink-glitch);
+            clip: rect(85px, 450px, 140px, 0);
+            animation: structuralGlitchSliceBeta 6s infinite linear alternate-reverse;
+        }
+
+        .loader-terminal-stream {
+            background: #000002;
+            border: 1px solid var(--border-cosmic-line);
+            font-family: var(--font-terminal-code);
+            font-size: 0.8rem;
+            color: var(--neon-cyan-core);
+            padding: 20px;
+            text-align: left;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            box-shadow: inset 0 0 15px rgba(0,0,0,0.8);
+            min-height: 110px;
+        }
+
+        .loader-log-row {
+            margin-bottom: 6px;
+            opacity: 0;
+            animation: structuralLogFadeIn 0.4s forwards;
+        }
+
+        .loader-log-row.success-node {
+            color: #50fa7b;
+        }
+
+        .loader-log-row.warning-node {
+            color: var(--neon-amber-warning);
+        }
+
+        .loader-progress-track {
+            width: 100%;
+            height: 5px;
+            background: rgba(255,255,255,0.02);
+            border-radius: 6px;
+            overflow: hidden;
+            position: relative;
+            border: 1px solid rgba(255,255,255,0.04);
+        }
+
+        .loader-progress-fill {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, var(--neon-purple-matrix), var(--neon-cyan-core), var(--neon-pink-glitch));
+            box-shadow: 0 0 12px var(--neon-cyan-core);
+        }
+
+        @keyframes structuralLogFadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes structuralGlitchShake {
+            0%, 100% { transform: skew(0deg); }
+            15% { transform: skew(-2deg); }
+            20% { transform: skew(3deg); }
+            35% { transform: skew(0deg); }
+            40% { transform: skew(-4deg); }
+            45% { transform: skew(2deg); }
+        }
+
+        @keyframes structuralGlitchSliceAlpha {
+            0% { clip: rect(12px, 9999px, 45px, 0); }
+            50% { clip: rect(76px, 9999px, 115px, 0); }
+            100% { clip: rect(34px, 9999px, 90px, 0); }
+        }
+
+        @keyframes structuralGlitchSliceBeta {
+            0% { clip: rect(92px, 9999px, 130px, 0); }
+            50% { clip: rect(15px, 9999px, 62px, 0); }
+            100% { clip: rect(80px, 9999px, 125px, 0); }
+        }
+    </style>
+    <style>
+        /* Modern Space Station Nav Bar CSS */
+        .cyber-navigation-station {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 24px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 10000;
+            background: rgba(1, 1, 4, 0.4);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border-bottom: 1px solid var(--border-cosmic-line);
+            transition: var(--speed-warp-transition);
+        }
+
+        .cyber-navigation-station.docked-state {
+            padding: 16px 8%;
+            background: rgba(2, 2, 8, 0.9);
+            border-color: rgba(0, 240, 255, 0.08);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+        }
+
+        .identity-logo-anchor {
+            font-family: var(--font-matrix-display);
+            font-weight: 900;
+            font-size: 1.6rem;
+            color: var(--text-ultra-white);
+            text-decoration: none;
+            letter-spacing: 3px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .identity-logo-anchor .core-node {
+            color: var(--neon-cyan-core);
+            text-shadow: 0 0 12px var(--neon-cyan-core);
+        }
+
+        .nav-links-cluster {
+            display: flex;
+            align-items: center;
+            list-style: none;
+            gap: 40px;
+        }
+
+        .nav-links-cluster a {
+            text-decoration: none;
+            font-family: var(--font-matrix-display);
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-space-muted);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: var(--speed-warp-transition);
+            position: relative;
+            padding: 6px 0;
+        }
+
+        .nav-links-cluster a::before {
+            content: '<';
+            margin-right: 6px;
+            opacity: 0;
+            transform: translateX(6px);
+            transition: var(--speed-warp-transition);
+            color: var(--neon-cyan-core);
+        }
+
+        .nav-links-cluster a::after {
+            content: ' />';
+            margin-left: 6px;
+            opacity: 0;
+            transform: translateX(-6px);
+            transition: var(--speed-warp-transition);
+            color: var(--neon-cyan-core);
+        }
+
+        .nav-links-cluster a:hover {
+            color: var(--text-ultra-white);
+            text-shadow: 0 0 12px rgba(0, 240, 255, 0.6);
+        }
+
+        .nav-links-cluster a:hover::before,
+        .nav-links-cluster a:hover::after {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .nav-links-cluster li.active-node-state a {
+            color: var(--neon-cyan-core);
+            text-shadow: 0 0 10px rgba(0, 240, 255, 0.35);
+        }
+
+        .mobile-matrix-toggle {
+            display: none;
+            color: var(--text-ultra-white);
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: var(--speed-warp-transition);
+        }
+
+        .mobile-matrix-toggle:hover {
+            color: var(--neon-cyan-core);
+        }
+
+        /* Immersive Quantum Hero Section CSS */
+        .hero-quantum-viewport {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 0 8%;
+            position: relative;
+            z-index: 100;
+            overflow: hidden;
+        }
+
+        .hero-grid-matrix-mesh {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(0, 240, 255, 0.015) 1px, transparent 1px), 
+                linear-gradient(90deg, rgba(0, 240, 255, 0.015) 1px, transparent 1px);
+            background-size: 60px 60px;
+            background-position: center;
+            perspective: 600px;
+            transform: rotateX(65deg) translateY(-35%) scale(2);
+            transform-origin: top center;
+            opacity: 0.45;
+            pointer-events: none;
+            mask-image: linear-gradient(to bottom, rgba(0,0,0,1), transparent);
+            -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1), transparent);
+        }
+
+        .hero-mainframe-panel {
+            max-width: 900px;
+            position: relative;
+        }
+
+        .system-status-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: rgba(0, 240, 255, 0.03);
+            border: 1px solid var(--border-neon-glow);
+            padding: 10px 20px;
+            border-radius: 50px;
+            margin-bottom: 30px;
+            box-shadow: inset 0 0 12px rgba(0, 240, 255, 0.04);
+        }
+
+        .radar-pulse-dot {
+            width: 9px;
+            height: 9px;
+            background-color: var(--neon-cyan-core);
+            border-radius: 50%;
+            position: relative;
+            box-shadow: 0 0 12px var(--neon-cyan-core);
+        }
+
+        .radar-pulse-dot::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: inherit;
+            border-radius: inherit;
+            top: 0;
+            left: 0;
+            animation: structuralRadarPing 2s infinite;
+        }
+
+        @keyframes structuralRadarPing {
+            0% { transform: scale(1); opacity: 1; }
+            100% { transform: scale(3.5); opacity: 0; }
+        }
+
+        .system-status-pill span {
+            font-family: var(--font-matrix-display);
+            font-size: 0.75rem;
+            letter-spacing: 2.5px;
+            color: var(--neon-cyan-core);
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .hero-mainframe-panel h1 {
+            font-family: var(--font-matrix-display);
+            font-size: 4.8rem;
+            font-weight: 900;
+            line-height: 1.1;
+            letter-spacing: -2px;
+            margin-bottom: 30px;
+            color: var(--text-ultra-white);
+        }
+
+        .dynamic-stream-gradient {
+            background: linear-gradient(90deg, #ffffff 15%, var(--neon-cyan-core), var(--neon-purple-matrix), #ffffff);
+            background-size: 300% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: textGradientFlowLoop 7s linear infinite;
+        }
+
+        @keyframes textGradientFlowLoop {
+            0% { background-position: 0% center; }
+            100% { background-position: 300% center; }
+        }
+
+        .terminal-typewriter-wrapper {
+            font-family: var(--font-terminal-code);
+            font-size: 1.6rem;
+            color: var(--text-cosmic-silver);
+            margin-bottom: 50px;
+            display: flex;
+            align-items: center;
+            min-height: 45px;
+        }
+
+        .terminal-typewriter-wrapper span {
+            color: var(--text-ultra-white);
+            text-shadow: 0 0 8px rgba(255,255,255,0.4);
+        }
+
+        .terminal-custom-cursor {
+            width: 3px;
+            height: 26px;
+            background: var(--neon-cyan-core);
+            margin-left: 10px;
+            animation: dynamicCursorFlash 0.9s infinite;
+            box-shadow: 0 0 12px var(--neon-cyan-core);
+        }
+
+        @keyframes dynamicCursorFlash {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        .control-buttons-cluster {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 25px;
+        }
+
+        .btn-quantum-primary {
+            text-decoration: none;
+            font-family: var(--font-matrix-display);
+            font-size: 0.85rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #000000;
+            background: var(--neon-cyan-core);
+            padding: 18px 40px;
+            border-radius: 4px;
+            box-shadow: 0 0 25px rgba(0, 240, 255, 0.35);
+            position: relative;
+            overflow: hidden;
+            transition: var(--speed-warp-transition);
+            border: 1px solid var(--neon-cyan-core);
+        }
+
+        .btn-quantum-primary:hover {
+            background: transparent;
+            color: var(--neon-cyan-core);
+            box-shadow: 0 0 35px rgba(0, 240, 255, 0.55), inset 0 0 20px rgba(0, 240, 255, 0.2);
+        }
+
+        .btn-quantum-secondary {
+            text-decoration: none;
+            font-family: var(--font-matrix-display);
+            font-size: 0.85rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--text-ultra-white);
+            background: transparent;
+            padding: 18px 40px;
+            border-radius: 4px;
+            border: 1px solid var(--border-cosmic-line);
+            transition: var(--speed-warp-transition);
+            position: relative;
+        }
+
+        .btn-quantum-secondary:hover {
+            border-color: var(--neon-purple-matrix);
+            box-shadow: 0 0 25px rgba(157, 0, 255, 0.35), inset 0 0 15px rgba(157, 0, 255, 0.15);
+            text-shadow: 0 0 6px #ffffff;
+        }
+
+        .viewport-scroll-anchor {
+            position: absolute;
+            bottom: 45px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            opacity: 0.5;
+            transition: var(--speed-warp-transition);
+        }
+
+        .viewport-scroll-anchor:hover {
+            opacity: 1;
+        }
+
+        .hardware-mouse-frame {
+            width: 26px;
+            height: 44px;
+            border: 2px solid var(--text-space-muted);
+            border-radius: 24px;
+            position: relative;
+        }
+
+        .hardware-mouse-wheel {
+            width: 4px;
+            height: 8px;
+            background-color: var(--neon-cyan-core);
+            border-radius: 4px;
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: structuralWheelMotion 1.6s infinite;
+            box-shadow: 0 0 6px var(--neon-cyan-core);
+        }
+
+        @keyframes structuralWheelMotion {
+            0% { opacity: 1; transform: translateX(-50%) translateY(0); }
+            100% { opacity: 0; transform: translateX(-50%) translateY(16px); }
+        }
+    </style>
+    <style>
+        /* Base Viewport Container Settings */
+        .section-quantum-container {
+            padding: 150px 8%;
+            position: relative;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .scroll-reveal-matrix-box {
+            opacity: 0;
+            transform: translateY(70px) scale(0.97);
+            transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .scroll-reveal-matrix-box.system-visible {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        .component-header-node {
+            margin-bottom: 80px;
+            position: relative;
+        }
+
+        .component-header-node .system-serial {
+            font-family: var(--font-terminal-code);
+            color: var(--neon-cyan-core);
+            font-size: 0.9rem;
+            display: block;
+            margin-bottom: 10px;
+            letter-spacing: 1.5px;
+        }
+
+        .component-header-node h2 {
+            font-family: var(--font-matrix-display);
+            font-size: 2.6rem;
+            font-weight: 900;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            display: inline-flex;
+            align-items: center;
+            gap: 20px;
+            color: var(--text-ultra-white);
+        }
+
+        .component-header-node h2::after {
+            content: '';
+            width: 140px;
+            height: 2px;
+            background: linear-gradient(90deg, var(--neon-cyan-core), transparent);
+            display: inline-block;
+            box-shadow: 0 0 10px var(--neon-cyan-core);
+        }
+
+        /* Identity Profile Structural CSS Grid */
+        .biography-mainframe-layout {
+            display: grid;
+            grid-template-columns: 1.25fr 1fr;
+            gap: 60px;
+            align-items: start;
+        }
+
+        .glassmorphic-cyber-panel {
+            background: var(--bg-cosmic-card);
+            border: 1px solid var(--border-cosmic-line);
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            border-radius: 16px;
+            padding: 55px;
+            box-shadow: 0 35px 70px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.06);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .glassmorphic-cyber-panel::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(255,255,255,0.02) 0%, transparent 100%);
+            pointer-events: none;
+        }
+
+        .panel-corner-bracket-system::before,
+        .panel-corner-bracket-system::after {
+            content: '';
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            border-color: rgba(0, 240, 255, 0.35);
+            border-style: solid;
+            pointer-events: none;
+        }
+
+        .panel-corner-bracket-system::before {
+            top: 18px;
+            left: 18px;
+            border-width: 2px 0 0 2px;
+        }
+
+        .panel-corner-bracket-system::after {
+            bottom: 18px;
+            right: 18px;
+            border-width: 0 2px 2px 0;
+        }
+
+        .bio-text-stream p {
+            font-size: 1.2rem;
+            line-height: 1.9;
+            color: #e2e8f0;
+            margin-bottom: 30px;
+            font-weight: 300;
+            text-align: justify;
+        }
+
+        .bio-text-stream p strong {
+            font-weight: 600;
+            color: var(--neon-cyan-core);
+            text-shadow: 0 0 6px rgba(0, 240, 255, 0.2);
+        }
+
+        .bio-text-stream p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Embedded Dynamic Terminal Widget */
+        .terminal-simulator-chassis {
+            background: #010105;
+            border: 1px solid var(--border-cosmic-line);
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.6);
+        }
+
+        .chassis-header-bar {
+            background: #06060f;
+            padding: 16px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255,255,255,0.04);
+        }
+
+        .chassis-control-dots {
+            display: flex;
+            gap: 10px;
+        }
+
+        .chassis-dot {
+            width: 11px;
+            height: 11px;
+            border-radius: 50%;
+            background: #ff5f56;
+        }
+
+        .chassis-dot:nth-child(2) { background: #ffbd2e; }
+        .chassis-dot:nth-child(3) { background: #27c93f; }
+
+        .chassis-title-text {
+            font-family: var(--font-terminal-code);
+            font-size: 0.8rem;
+            color: var(--text-space-muted);
+            letter-spacing: 1.2px;
+        }
+
+        .chassis-execution-body {
+            padding: 30px;
+            font-family: var(--font-terminal-code);
+            font-size: 0.9rem;
+            color: #a9b1d6;
+            min-height: 300px;
+        }
+
+        .chassis-prompt {
+            color: var(--neon-pink-glitch);
+            margin-right: 10px;
+        }
+
+        .chassis-directory {
+            color: var(--neon-blue-glow);
+            margin-right: 10px;
+        }
+
+        .chassis-output-row {
+            color: #50fa7b;
+            margin-top: 8px;
+            margin-bottom: 20px;
+            display: none;
+            line-height: 1.6;
+        }
+
+        /* Interactive Knowledge Deck CSS Grid */
+        .skills-matrix-viewport-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 35px;
+        }
+
+        .knowledge-interactive-card {
+            background: var(--bg-cosmic-card);
+            border: 1px solid var(--border-cosmic-line);
+            border-radius: 14px;
+            padding: 45px 35px;
+            text-align: center;
+            position: relative;
+            transition: var(--speed-warp-transition);
+            cursor: pointer;
+            overflow: hidden;
+        }
+
+        .knowledge-interactive-card i {
+            font-size: 3.8rem;
+            margin-bottom: 30px;
+            display: inline-block;
+            transition: var(--speed-warp-transition);
+        }
+
+        .knowledge-interactive-card h3 {
+            font-family: var(--font-matrix-display);
+            font-size: 1.15rem;
+            font-weight: 700;
+            letter-spacing: 1.2px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            color: var(--text-ultra-white);
+        }
+
+        .quantum-card-progress-track {
+            width: 100%;
+            height: 3px;
+            background: rgba(255,255,255,0.04);
+            border-radius: 6px;
+            overflow: hidden;
+            margin-top: 20px;
+            opacity: 0;
+            transition: var(--speed-warp-transition);
+        }
+
+        .quantum-card-progress-bar {
+            height: 100%;
+            width: 0%;
+            background: var(--neon-cyan-core);
+            box-shadow: 0 0 10px var(--neon-cyan-core);
+            transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .knowledge-interactive-card:hover {
+            background: var(--bg-card-hover);
+            transform: translateY(-8px);
+            border-color: rgba(255,255,255,0.15);
+        }
+
+        .knowledge-interactive-card[data-tech-node="html"]:hover {
+            box-shadow: 0 20px 40px rgba(227, 79, 38, 0.18);
+            border-color: #e34f26;
+        }
+
+        .knowledge-interactive-card[data-tech-node="html"]:hover i { color: #e34f26; transform: scale(1.15) rotate(4deg); }
+
+        .knowledge-interactive-card[data-tech-node="css"]:hover {
+            box-shadow: 0 20px 40px rgba(21, 114, 182, 0.18);
+            border-color: #1572b6;
+        }
+
+        .knowledge-interactive-card[data-tech-node="css"]:hover i { color: #1572b6; transform: scale(1.15) rotate(-4deg); }
+
+        .knowledge-interactive-card[data-tech-node="js"]:hover {
+            box-shadow: 0 20px 40px rgba(247, 223, 30, 0.18);
+            border-color: #f7df1e;
+        }
+
+        .knowledge-interactive-card[data-tech-node="js"]:hover i { color: #f7df1e; transform: scale(1.15) rotate(4deg); }
+
+        .knowledge-interactive-card[data-tech-node="python"]:hover {
+            box-shadow: 0 20px 40px rgba(55, 118, 171, 0.18);
+            border-color: #3776ab;
+        }
+
+        .knowledge-interactive-card[data-tech-node="python"]:hover i { color: #3776ab; transform: scale(1.15) rotate(-4deg); }
+
+        .knowledge-interactive-card[data-tech-node="network"]:hover {
+            box-shadow: 0 20px 40px rgba(0, 240, 255, 0.18);
+            border-color: var(--neon-cyan-core);
+        }
+
+        .knowledge-interactive-card[data-tech-node="network"]:hover i { color: var(--neon-cyan-core); transform: scale(1.15) rotate(4deg); }
+
+        .knowledge-interactive-card:hover .quantum-card-progress-track {
+            opacity: 1;
+        }
+
+        /* Production Deployments System CSS Grid */
+        .production-deployments-showcase {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 50px;
+        }
+
+        .production-hyperlink-card {
+            background: var(--bg-cosmic-card);
+            border: 1px solid var(--border-cosmic-line);
+            border-radius: 16px;
+            padding: 50px;
+            position: relative;
+            overflow: hidden;
+            transition: var(--speed-warp-transition);
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .production-hyperlink-card::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--neon-cyan-core), var(--neon-purple-matrix), var(--neon-pink-glitch));
+            bottom: 0;
+            left: -100%;
+            transition: var(--speed-warp-transition);
+        }
+
+        .production-hyperlink-card:hover::after {
+            left: 0;
+        }
+
+        .production-hyperlink-card:hover {
+            transform: translateY(-12px) scale(1.02);
+            border-color: rgba(0, 240, 255, 0.3);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.6), 0 0 35px rgba(0, 240, 255, 0.08);
+        }
+
+        .card-metadata-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .meta-badges-strip {
+            display: flex;
+            gap: 12px;
+        }
+
+        .meta-system-badge {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid var(--border-cosmic-line);
+            padding: 6px 14px;
+            border-radius: 4px;
+            font-family: var(--font-terminal-code);
+            font-size: 0.75rem;
+            color: var(--text-space-muted);
+            text-transform: uppercase;
+        }
+
+        .production-hyperlink-card:hover .meta-system-badge {
+            border-color: rgba(0, 240, 255, 0.2);
+            color: var(--text-ultra-white);
+        }
+
+        .action-node-indicator {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.02);
+            border: 1px solid var(--border-cosmic-line);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: var(--speed-warp-transition);
+            color: var(--text-space-muted);
+        }
+
+        .production-hyperlink-card:hover .action-node-indicator {
+            background: var(--neon-cyan-core);
+            border-color: var(--neon-cyan-core);
+            color: #000000;
+            box-shadow: 0 0 20px var(--neon-cyan-core);
+        }
+
+        .production-hyperlink-card h3 {
+            font-family: var(--font-matrix-display);
+            font-size: 1.45rem;
+            font-weight: 700;
+            letter-spacing: 1.2px;
+            margin-bottom: 22px;
+            text-transform: uppercase;
+            color: var(--text-ultra-white);
+            transition: var(--speed-warp-transition);
+        }
+
+        .production-hyperlink-card:hover h3 {
+            color: var(--neon-cyan-core);
+            text-shadow: 0 0 12px rgba(0, 240, 255, 0.25);
+        }
+
+        .production-hyperlink-card p {
+            color: var(--text-space-muted);
+            line-height: 1.85;
+            font-size: 1.05rem;
+            font-weight: 300;
+            text-align: justify;
+        }
+
+        .production-hyperlink-card:hover p {
+            color: var(--text-cosmic-silver);
+        }
+
+        /* Quantum Terminal Footer System */
+        .mainframe-terminal-footer {
+            border-top: 1px solid var(--border-cosmic-line);
+            padding: 60px 8%;
+            text-align: center;
+            background: rgba(1, 1, 4, 0.98);
+            position: relative;
+            z-index: 200;
+        }
+
+        .mainframe-terminal-footer p {
+            font-family: var(--font-matrix-display);
+            font-size: 0.85rem;
+            letter-spacing: 4px;
+            color: var(--text-space-muted);
+            text-transform: uppercase;
+        }
+
+        .mainframe-terminal-footer p span {
+            color: var(--neon-cyan-core);
+            font-weight: 800;
+        }
+
+        /* Responsive Viewport Grid Control Systems */
+        @media (max-width: 1200px) {
+            .biography-mainframe-layout {
+                grid-template-columns: 1fr;
+                gap: 50px;
+            }
+        }
+
+        @media (max-width: 992px) {
+            html { font-size: 15px; }
+            .hero-mainframe-panel h1 { font-size: 3.8rem; }
+            .production-deployments-showcase { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 768px) {
+            html { font-size: 14px; }
+            .cyber-navigation-station { padding: 20px 6%; }
+            .nav-links-cluster { display: none; }
+            .mobile-matrix-toggle { display: block; }
+            .hero-quantum-viewport { padding: 0 6%; }
+            .hero-mainframe-panel h1 { font-size: 3.2rem; }
+            .section-quantum-container { padding: 110px 6%; }
+            .glassmorphic-cyber-panel { padding: 35px; }
+            .production-hyperlink-card { padding: 35px; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Immersive Systems Initialization Canvas Overlay -->
+    <div id="cyber-mainframe-loader">
+        <div class="loader-interface-box">
+            <div class="loader-glitch-headline">SHIVANSH GOSWAMI</div>
+            <div class="loader-terminal-stream" id="loader-terminal-anchor"></div>
+            <div class="loader-progress-track">
+                <div class="loader-progress-fill" id="loader-progress-fluid-bar"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cosmic Background Simulation Canvas Nodes -->
+    <div class="ambient-space-matrix">
+        <div class="quantum-nebula-cluster nebula-node-alpha"></div>
+        <div class="quantum-nebula-cluster nebula-node-beta"></div>
+        <div class="quantum-nebula-cluster nebula-node-gamma"></div>
+        <canvas id="starfield-canvas-core"></canvas>
+        <canvas id="dust-particle-canvas"></canvas>
+    </div>
+
+    <!-- Active Mainframe Navigation Header -->
+    <nav class="cyber-navigation-station" id="cyber-navbar">
+        <a href="#" class="identity-logo-anchor">SHIVANSH<span class="core-node">_CORE</span></a>
+        <div class="mobile-matrix-toggle"><i class="fas fa-bars"></i></div>
+        <ul class="nav-links-cluster">
+            <li class="active-node-state"><a href="#">Home</a></li>
+            <li><a href="#about">About Base</a></li>
+            <li><a href="#skills">Skill Matrix</a></li>
+            <li><a href="#projects">Deployments</a></li>
+        </ul>
+    </nav>
+
+    <!-- Interactive Spatial Hero Module -->
+    <section class="hero-quantum-viewport">
+        <div class="hero-grid-matrix-mesh"></div>
+        <div class="hero-mainframe-panel">
+            <div class="system-status-pill">
+                <div class="radar-pulse-dot"></div>
+                <span>QUANTUM ENGINE INTERFACE ACTIVE // SECURE ACCESS</span>
+            </div>
+            <h1>CONSTRUCTING THE DIGITAL<br><span class="dynamic-stream-gradient">REALITY OF SHIVANSH</span></h1>
+            <div class="terminal-typewriter-wrapper">
+                >&nbsp;<span id="hero-typewriter-target"></span><div class="terminal-custom-cursor"></div>
+            </div>
+            <div class="control-buttons-cluster">
+                <a href="#about" class="btn-quantum-primary">Access Database</a>
+                <a href="#projects" class="btn-quantum-secondary">View Deployments</a>
+            </div>
+        </div>
+        <a href="#about" class="viewport-scroll-anchor">
+            <div class="hardware-mouse-frame"><div class="hardware-mouse-wheel"></div></div>
+        </a>
+    </section>
+
+    <!-- Section 01: Core Metadata Identification Profile -->
+    <section id="about" class="section-quantum-container scroll-reveal-matrix-box">
+        <div class="component-header-node">
+            <span class="system-serial">01 // STRUCTURAL METADATA IDENTITY</span>
+            <h2>About Base</h2>
+        </div>
+        <div class="biography-mainframe-layout">
+            <div class="glassmorphic-cyber-panel">
+                <div class="panel-corner-bracket-system"></div>
+                <div class="bio-text-stream">
+                    <p>Greetings! I am <strong>Shivansh Goswami</strong>, a passionate forward-looking tech enthusiast and developer hailing from <strong>Lakhimpur Kheri, Uttar Pradesh</strong>. Currently expanding my logical horizons in <strong>Class 11</strong>, I focus my energy on creating sleek digital environments and unravelling complex code logic.</p>
+                    <p>While traditional milestones like my <strong>Class 10 boards gave me a steady base with a solid 66% score</strong>, my true technical playground spans outside textbook limits. I have a continuous drive to construct advanced frontend systems and explore structural network designs.</p>
+                    <p>For me, coding isn't just about syntax—it's about engineering custom realities. I thrive on translating abstract ideas into optimized, highly-aesthetic realities.</p>
+                </div>
+            </div>
+            <div class="terminal-simulator-chassis">
+                <div class="chassis-header-bar">
+                    <div class="chassis-control-dots"><div class="chassis-dot"></div><div class="chassis-dot"></div><div class="chassis-dot"></div></div>
+                    <div class="chassis-title-text">bash - mainframe_core.sh</div>
+                </div>
+                <div class="chassis-execution-body" id="terminal-simulator-anchor-body">
+                    <span class="chassis-prompt">guest@shivansh_core:~$</span><span class="chassis-command-text">cat objective_matrix.txt</span>
+                    <div class="chassis-output-row" id="terminal-chassis-output-target">> Initializing core objective protocol...<br>> Status: Active.<br>> Focus area: Advanced security architectures, modular scripting frameworks, and deep aesthetic user experience paradigms. Everything clean, everything functional.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 02: Knowledge Parameter Node Grid Array -->
+    <section id="skills" class="section-quantum-container scroll-reveal-matrix-box">
+        <div class="component-header-node">
+            <span class="system-serial">02 // KNOWLEDGE PARAMETER DATA ARRAY</span>
+            <h2>Skill Matrix</h2>
+        </div>
+        <div class="skills-matrix-viewport-grid">
+            <div class="knowledge-interactive-card" data-tech-node="html" data-target-percentage="95">
+                <i class="fab fa-html5" style="color: #e34f26;"></i><h3>HTML5 Semantic</h3>
+                <div class="quantum-card-progress-track"><div class="quantum-card-progress-bar" style="background: #e34f26; box-shadow: 0 0 10px #e34f26;"></div></div>
+            </div>
+            <div class="knowledge-interactive-card" data-tech-node="css" data-target-percentage="90">
+                <i class="fab fa-css3-alt" style="color: #1572b6;"></i><h3>CSS3 Grid System</h3>
+                <div class="quantum-card-progress-track"><div class="quantum-card-progress-bar" style="background: #1572b6; box-shadow: 0 0 10px #1572b6;"></div></div>
+            </div>
+            <div class="knowledge-interactive-card" data-tech-node="js" data-target-percentage="75">
+                <i class="fab fa-js" style="color: #f7df1e;"></i><h3>JavaScript Engine</h3>
+                <div class="quantum-card-progress-track"><div class="quantum-card-progress-bar" style="background: #f7df1e; box-shadow: 0 0 10px #f7df1e;"></div></div>
+            </div>
+            <div class="knowledge-interactive-card" data-tech-node="python" data-target-percentage="80">
+                <i class="fab fa-python" style="color: #3776ab;"></i><h3>Python Core</h3>
+                <div class="quantum-card-progress-track"><div class="quantum-card-progress-bar" style="background: #3776ab; box-shadow: 0 0 10px #3776ab;"></div></div>
+            </div>
+            <div class="knowledge-interactive-card" data-tech-node="network" data-target-percentage="70">
+                <i class="fas fa-terminal" style="color: var(--neon-cyan-core);"></i><h3>Network Frameworks</h3>
+                <div class="quantum-card-progress-track"><div class="quantum-card-progress-bar"></div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 03: Live Active Production Builds -->
+    <section id="projects" class="section-quantum-container scroll-reveal-matrix-box">
+        <div class="component-header-node">
+            <span class="system-serial">03 // ACTIVE DEPLOYMENTS COMPILATION</span>
+            <h2>Production Build Output</h2>
+        </div>
+        <div class="production-deployments-showcase">
+            <!-- School Project Matrix Hyperlink -->
+            <a href="https://serieshollywood307-ops.github.io/Shivansh-giri-Silver-City-academy-/" target="_blank" class="production-hyperlink-card">
+                <div class="card-metadata-row">
+                    <div class="meta-badges-strip"><span class="meta-system-badge">HTML5 Architecture</span><span class="meta-system-badge">CSS3 Custom</span></div>
+                    <div class="action-node-indicator"><i class="fas fa-external-link-alt"></i></div>
+                </div>
+                <div>
+                    <h3>Silver City Academy Ecosystem</h3>
+                    <p>A dark space-inspired architectural interface engineered purposefully for an academic structural model. Deployed using custom semantic structural rules, multi-viewport layout configurations, complex hover interaction matrices, and full fluid rendering optimization.</p>
+                </div>
+            </a>
+            <div class="production-hyperlink-card">
+                <div class="card-metadata-row">
+                    <div class="meta-badges-strip"><span class="meta-system-badge">Native Engine JS</span><span class="meta-system-badge">CSS Micro-Glow</span></div>
+                    <div class="action-node-indicator"><i class="fas fa-lock"></i></div>
+                </div>
+                <div>
+                    <h3>Quantum Identity Hub v3.0</h3>
+                    <p>The interface system you are currently tracking. A complex high-aesthetic single-file production construct featuring interactive spatial canvas dust backdrops, progressive system diagnostics loader, fluid viewport tracking, and complex node expansions.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Active Production Mainframe Footer -->
+    <footer class="mainframe-terminal-footer">
+        <p>&copy; 2026 <span>SHIVANSH GOSWAMI</span> | MATRIX SECURITY NODE DEPLOYED</p>
+    </footer>
+    <script>
+        /* Cosmic Spatial Background Canvas Core Engine Script */
+        const primaryCanvasInstance = document.getElementById('starfield-canvas-core');
+        const secondaryCanvasCtx = primaryCanvasInstance.getContext('2d');
+        
+        const tertiaryCanvasInstance = document.getElementById('dust-particle-canvas');
+        const quaternaryCanvasCtx = tertiaryCanvasInstance.getContext('2d');
+        
+        let customStarsPool = [];
+        let customDustPool = [];
+        let internalSystemDeviceCoordinates = { x: null, y: null };
+
+        function structuralRecomputeViewports() {
+            primaryCanvasInstance.width = window.innerWidth;
+            primaryCanvasInstance.height = window.innerHeight;
+            tertiaryCanvasInstance.width = window.innerWidth;
+            tertiaryCanvasInstance.height = window.innerHeight;
+            initializeQuantumEcosystemSpace();
+        }
+
+        function initializeQuantumEcosystemSpace() {
+            customStarsPool = [];
+            customDustPool = [];
+            
+            const totalCalculatedStarsDensity = Math.floor((primaryCanvasInstance.width * primaryCanvasInstance.height) / 2000);
+            for (let i = 0; i < totalCalculatedStarsDensity; i++) {
+                customStarsPool.push({
+                    x: Math.random() * primaryCanvasInstance.width,
+                    y: Math.random() * primaryCanvasInstance.height,
+                    radius: Math.random() * 1.5,
+                    luminosityValue: Math.random(),
+                    oscillationVelocity: Math.random() * 0.012 + 0.004
+                });
+            }
+
+            const totalCalculatedDustDensity = Math.floor((tertiaryCanvasInstance.width * tertiaryCanvasInstance.height) / 8000);
+            for (let j = 0; j < totalCalculatedDustDensity; j++) {
+                customDustPool.push({
+                    x: Math.random() * tertiaryCanvasInstance.width,
+                    y: Math.random() * tertiaryCanvasInstance.height,
+                    radius: Math.random() * 2.5 + 0.5,
+                    opacityValue: Math.random() * 0.5 + 0.1,
+                    driftSpeedX: (Math.random() - 0.5) * 0.15,
+                    driftSpeedY: (Math.random() - 0.5) * 0.15
+                });
+            }
+        }
+
+        function structuralRenderEcosystemLoop() {
+            secondaryCanvasCtx.clearRect(0, 0, primaryCanvasInstance.width, primaryCanvasInstance.height);
+            secondaryCanvasCtx.fillStyle = '#ffffff';
+            
+            customStarsPool.forEach(nodeStar => {
+                secondaryCanvasCtx.globalAlpha = nodeStar.luminosityValue;
+                secondaryCanvasCtx.beginPath();
+                secondaryCanvasCtx.arc(nodeStar.x, nodeStar.y, nodeStar.radius, 0, Math.PI * 2);
+                secondaryCanvasCtx.fill();
+                
+                nodeStar.luminosityValue += nodeStar.oscillationVelocity;
+                if (nodeStar.luminosityValue > 1 || nodeStar.luminosityValue < 0) {
+                    nodeStar.oscillationVelocity = -nodeStar.oscillationVelocity;
+                }
+            });
+
+            quaternaryCanvasCtx.clearRect(0, 0, tertiaryCanvasInstance.width, tertiaryCanvasInstance.height);
+            quaternaryCanvasCtx.fillStyle = 'rgba(0, 240, 255, 0.8)';
+            
+            customDustPool.forEach(nodeDust => {
+                quaternaryCanvasCtx.globalAlpha = nodeDust.opacityValue;
+                quaternaryCanvasCtx.beginPath();
+                quaternaryCanvasCtx.arc(nodeDust.x, nodeDust.y, nodeDust.radius, 0, Math.PI * 2);
+                quaternaryCanvasCtx.fill();
+                
+                nodeDust.x += nodeDust.driftSpeedX;
+                nodeDust.y += nodeDust.driftSpeedY;
+                
+                if (nodeDust.x < 0) nodeDust.x = tertiaryCanvasInstance.width;
+                if (nodeDust.x > tertiaryCanvasInstance.width) nodeDust.x = 0;
+                if (nodeDust.y < 0) nodeDust.y = tertiaryCanvasInstance.height;
+                if (nodeDust.y > tertiaryCanvasInstance.height) nodeDust.y = 0;
+            });
+
+            requestAnimationFrame(structuralRenderEcosystemLoop);
+        }
+
+        window.addEventListener('resize', structuralRecomputeViewports);
+        structuralRecomputeViewports();
+        structuralRenderEcosystemLoop();
+
+        /* Advanced Mainframe Typewriter Engine Script */
+        const targetedMatrixStrings = ["Frontend Architect Core.", "Python System Planner.", "Cyber Space Operator."];
+        let indexStringCounter = 0;
+        let indexCharacterCounter = 0;
+        let executionEraseState = false;
+        const domTargetNode = document.getElementById('hero-typewriter-target');
+        let operationVelocitySpeed = 100;
+
+        function executionCoreTypewriterEngine() {
+            const evaluationFullString = targetedMatrixStrings[indexStringCounter];
+            
+            if (executionEraseState) {
+                domTargetNode.textContent = evaluationFullString.substring(0, indexCharacterCounter - 1);
+                indexCharacterCounter--;
+                operationVelocitySpeed = 40;
+            } else {
+                domTargetNode.textContent = evaluationFullString.substring(0, indexCharacterCounter + 1);
+                indexCharacterCounter++;
+                operationVelocitySpeed = 120;
+            }
+
+            if (!executionEraseState && indexCharacterCounter === evaluationFullString.length) {
+                executionEraseState = true;
+                operationVelocitySpeed = 2400;
+            } else if (executionEraseState && indexCharacterCounter === 0) {
+                executionEraseState = false;
+                indexStringCounter = (indexStringCounter + 1) % targetedMatrixStrings.length;
+                operationVelocitySpeed = 450;
+            }
+
+            setTimeout(executionCoreTypewriterEngine, operationVelocitySpeed);
+        }
+
+        setTimeout(executionCoreTypewriterEngine, 2600);
+
+        /* Granular Scroll Viewport Interaction Detector Script */
+        const batchRevealNodes = document.querySelectorAll('.scroll-reveal-matrix-box');
+
+        function assessViewportIntersectionBoundaries() {
+            const calculatedTriggerPoint = window.innerHeight * 0.88;
+            
+            batchRevealNodes.forEach(singleBlock => {
+                const nodeTopBoundaryPosition = singleBlock.getBoundingClientRect().top;
+                if (nodeTopBoundaryPosition < calculatedTriggerPoint) {
+                    singleBlock.classList.add('system-visible');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', assessViewportIntersectionBoundaries);
+        assessViewportIntersectionBoundaries();
+
+        /* Diagnostic Boot Loader Subsystem Logic Script */
+        const terminalLoaderAnchor = document.getElementById('loader-terminal-anchor');
+        const fluidProgressBarCore = document.getElementById('loader-progress-fluid-bar');
+        
+        const structuralDiagnosticLogs = [
+            ">> INITIALIZING QUANTUM BOOT CORE METADATA...",
+            ">> ATTACHING COMPONENT GRID STACK LAYOUTS...",
+            ">> PAIRING SCHOOL ECOSYSTEM REDIRECT PORTS...",
+            ">> PARSING INTENSIVE HIGH-AESTHETIC CSS NODES...",
+            ">> CONFIGURING 1000+ SEAMLESS SYSTEM ARCHITECTURES...",
+            ">> STATUS: ALL ENGINES DEPLOYED AND READY."
+        ];
+        
+        let pointerLogIdx = 0;
+
+        function runMainframeLoaderTerminalLogs() {
+            if (pointerLogIdx < structuralDiagnosticLogs.length) {
+                const freshRowElement = document.createElement('div');
+                freshRowElement.className = 'loader-log-row' + (pointerLogIdx === structuralDiagnosticLogs.length - 1 ? ' success-node' : '');
+                freshRowElement.innerText = structuralDiagnosticLogs[pointerLogIdx];
+                terminalLoaderAnchor.appendChild(freshRowElement);
+                pointerLogIdx++;
+                setTimeout(runMainframeLoaderTerminalLogs, 400);
+            }
+        }
+
+        runMainframeLoaderTerminalLogs();
+
+        let structuralProgressPercentage = 0;
+        const systemBootTimerInterval = setInterval(() => {
+            structuralProgressPercentage += Math.random() * 6;
+            if (structuralProgressPercentage >= 100) {
+                structuralProgressPercentage = 100;
+                clearInterval(systemBootTimerInterval);
+                
+                setTimeout(() => {
+                    const mainframeLoaderScreenNode = document.getElementById('cyber-mainframe-loader');
+                    mainframeLoaderScreenNode.style.opacity = '0';
+                    mainframeLoaderScreenNode.style.visibility = 'hidden';
+                }, 2400);
+            }
+            fluidProgressBarCore.style.width = structuralProgressPercentage + '%';
+        }, 120);
+
+        setTimeout(() => {
+            const componentOutputTarget = document.getElementById('terminal-chassis-output-target');
+            if (componentOutputTarget) componentOutputTarget.style.display = 'block';
+        }, 4500);
+
+        /* Micro Interactive Progress Filling Logic Control Script */
+        document.querySelectorAll('.knowledge-interactive-card').forEach(individualNode => {
+            const readingTargetPercentValue = individualNode.getAttribute('data-target-percentage');
+            const targetedInteriorBarFill = individualNode.querySelector('.quantum-card-progress-bar');
+            
+            if (targetedInteriorBarFill) {
+                targetedInteriorBarFill.style.width = readingTargetPercentValue + '%';
+            }
+        });
+    </script>
+</body>
+</html>
