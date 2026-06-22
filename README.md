@@ -21,8 +21,8 @@ Welcome to my GitHub profile! I'm a passionate high school student deeply intere
 ---
 
 ### 📊 GitHub Stats
-![Shivansh's GitHub stats](https://github-readme-stats.vercel.app/api?username=serieshollywood307-ops&show_icons=true&theme=radial)
-![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=serieshollywood307-ops&layout=compact&theme=radial)
+![Shivansh's GitHub stats](https://github-readme-stats-eight-theta.vercel.app/api?username=serieshollywood307-ops&show_icons=true&theme=radial)
+![Top Langs](https://github-readme-stats-eight-theta.vercel.app/api/top-langs/?username=serieshollywood307-ops&layout=compact&theme=radial)
 
 ---
 
