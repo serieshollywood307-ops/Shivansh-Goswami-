@@ -30,1439 +30,1047 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&family=Fira+Code:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <style>
-        /* Global Design Architecture Variables */
+        <style>
         :root {
-            --bg-ultra-black: #010103;
-            --bg-deep-space: #03030b;
-            --bg-cosmic-card: rgba(8, 8, 24, 0.6);
-            --bg-card-hover: rgba(14, 14, 42, 0.85);
-            --neon-cyan-core: #00f0ff;
-            --neon-blue-glow: #0066ff;
-            --neon-purple-matrix: #9d00ff;
-            --neon-pink-glitch: #ff007f;
-            --neon-amber-warning: #ffbd59;
-            --text-ultra-white: #ffffff;
-            --text-cosmic-silver: #cbd5e1;
-            --text-space-muted: #475569;
-            --border-neon-glow: rgba(0, 240, 255, 0.12);
-            --border-cosmic-line: rgba(255, 255, 255, 0.04);
-            --font-matrix-display: 'Orbitron', sans-serif;
-            --font-cosmic-body: 'Space Grotesk', sans-serif;
-            --font-terminal-code: 'Fira Code', monospace;
-            --quantum-box-shadow: 0 0 25px rgba(0, 240, 255, 0.15);
-            --speed-warp-transition: all 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+            --bg-white: #f8fafc;
+            --text-main: #0f172a;
+            --text-muted: #64748b;
+            --water-blue: #0284c7;
+            --sky-blue: #38bdf8;
+            --soft-cyan: rgba(224, 242, 254, 0.75);
+            --cyber-glow: rgba(56, 189, 248, 0.35);
+            
+            /* Ultra Glass Properties */
+            --glass-card-bg: rgba(255, 255, 255, 0.72);
+            --glass-border: rgba(255, 255, 255, 0.9);
+            --glass-shadow: 0 20px 40px rgba(14, 165, 233, 0.08), inset 0 1px 1px rgba(255, 255, 255, 0.95);
+            --glass-hover-shadow: 0 30px 60px rgba(14, 165, 233, 0.18), inset 0 1px 2px rgba(255, 255, 255, 1);
         }
 
-        /* Core System Reset Protocols */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            outline: none;
-            -webkit-tap-highlight-color: transparent;
+            font-family: 'Plus Jakarta Sans', sans-serif;
         }
 
         html {
             scroll-behavior: smooth;
-            font-size: 16px;
-            background-color: var(--bg-ultra-black);
+            scroll-padding-top: 90px;
         }
 
         body {
-            background-color: var(--bg-ultra-black);
-            color: var(--text-cosmic-silver);
-            font-family: var(--font-cosmic-body);
-            overflow-x: hidden;
+            background-color: var(--bg-white);
+            color: var(--text-main);
             min-height: 100vh;
-            line-height: 1.7;
+            overflow-x: hidden;
+            position: relative;
+            width: 100%;
         }
 
-        /* Custom Space Scrollbar Interface */
-        ::-webkit-scrollbar {
-            width: 8px;
-            height: 8px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: var(--bg-ultra-black);
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: linear-gradient(
-                180deg, 
-                var(--neon-cyan-core), 
-                var(--neon-purple-matrix), 
-                var(--neon-pink-glitch)
-            );
-            border-radius: 20px;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: linear-gradient(
-                180deg, 
-                var(--neon-pink-glitch), 
-                var(--neon-cyan-core)
-            );
-        }
-
-        /* Core Canvas Engine Overlays */
-        .ambient-space-matrix {
+        /* Ambient Background Blobs */
+        .aura-container {
             position: fixed;
             top: 0;
             left: 0;
-            width: 100vw;
+            width: 100%;
             height: 100vh;
-            z-index: -10;
+            z-index: -1;
             overflow: hidden;
+            filter: blur(80px);
+            opacity: 0.7;
             pointer-events: none;
+            will-change: transform;
         }
 
-        .quantum-nebula-cluster {
+        .aura-blob {
             position: absolute;
             border-radius: 50%;
-            filter: blur(140px);
-            opacity: 0.35;
-            mix-blend-mode: screen;
-            animation: cosmicNebulaDrift 30s infinite alternate ease-in-out;
+            animation: float 18s infinite alternate ease-in-out;
         }
 
-        .nebula-node-alpha {
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(157,0,255,0.18) 0%, transparent 75%);
-            top: -15%;
-            left: -10%;
-        }
-
-        .nebula-node-beta {
-            width: 700px;
-            height: 700px;
-            background: radial-gradient(circle, rgba(0,240,255,0.14) 0%, transparent 75%);
-            bottom: -15%;
-            right: -10%;
-            animation-delay: -7s;
-        }
-
-        .nebula-node-gamma {
+        .blob-1 {
             width: 500px;
             height: 500px;
-            background: radial-gradient(circle, rgba(255,0,127,0.1) 0%, transparent 75%);
-            top: 50%;
-            left: 45%;
-            transform: translate(-50%, -50%);
-            animation-delay: -12s;
+            background: radial-gradient(circle, #7dd3fc, #bae6fd 60%, transparent);
+            top: -10%;
+            left: -5%;
         }
 
-        @keyframes cosmicNebulaDrift {
-            0% {
-                transform: scale(1) translate(0px, 0px) rotate(0deg);
-            }
-            50% {
-                transform: scale(1.1) translate(40px, -60px) rotate(90deg);
-            }
-            100% {
-                transform: scale(1.2) translate(-30px, 40px) rotate(180deg);
-            }
+        .blob-2 {
+            width: 550px;
+            height: 550px;
+            background: radial-gradient(circle, #e0f2fe, #38bdf8 70%, transparent);
+            bottom: -10%;
+            right: -5%;
+            animation-duration: 24s;
         }
 
-        #starfield-canvas-core, 
-        #dust-particle-canvas {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            display: block;
+        .blob-3 {
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, #93c5fd, transparent 70%);
+            top: 45%;
+            left: 30%;
+            animation-duration: 20s;
         }
 
-        /* Immersive Cyber Loader Modules */
-        #cyber-mainframe-loader {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: #010104;
-            z-index: 999999;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            transition: opacity 0.9s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.9s;
+        @keyframes float {
+            0% { transform: translate(0px, 0px) scale(1); }
+            50% { transform: translate(60px, 40px) scale(1.1); }
+            100% { transform: translate(-40px, 70px) scale(0.95); }
         }
 
-        .loader-interface-box {
-            text-align: center;
-            max-width: 500px;
-            width: 85%;
-            padding: 40px;
-            position: relative;
-        }
-
-        .loader-glitch-headline {
-            font-family: var(--font-matrix-display);
-            font-size: 2rem;
-            font-weight: 900;
-            letter-spacing: 6px;
-            color: var(--text-ultra-white);
-            text-transform: uppercase;
-            position: relative;
-            margin-bottom: 30px;
-            animation: structuralGlitchShake 3.5s infinite;
-        }
-
-        .loader-glitch-headline::before {
-            content: 'SHIVANSH GOSWAMI';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: #010104;
-            left: 3px;
-            text-shadow: -3px 0 var(--neon-cyan-core);
-            clip: rect(44px, 450px, 56px, 0);
-            animation: structuralGlitchSliceAlpha 6s infinite linear alternate-reverse;
-        }
-
-        .loader-glitch-headline::after {
-            content: 'SHIVANSH GOSWAMI';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: #010104;
-            left: -3px;
-            text-shadow: -3px 0 var(--neon-pink-glitch);
-            clip: rect(85px, 450px, 140px, 0);
-            animation: structuralGlitchSliceBeta 6s infinite linear alternate-reverse;
-        }
-
-        .loader-terminal-stream {
-            background: #000002;
-            border: 1px solid var(--border-cosmic-line);
-            font-family: var(--font-terminal-code);
-            font-size: 0.8rem;
-            color: var(--neon-cyan-core);
-            padding: 20px;
-            text-align: left;
-            border-radius: 8px;
-            margin-bottom: 25px;
-            box-shadow: inset 0 0 15px rgba(0,0,0,0.8);
-            min-height: 110px;
-        }
-
-        .loader-log-row {
-            margin-bottom: 6px;
+        /* Scroll Reveal Animation */
+        .scroll-reveal {
             opacity: 0;
-            animation: structuralLogFadeIn 0.4s forwards;
+            transform: translateY(35px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            scroll-margin-top: 100px;
         }
 
-        .loader-log-row.success-node {
-            color: #50fa7b;
+        .scroll-reveal.active {
+            opacity: 1;
+            transform: translateY(0);
         }
 
-        .loader-log-row.warning-node {
-            color: var(--neon-amber-warning);
-        }
-
-        .loader-progress-track {
-            width: 100%;
-            height: 5px;
-            background: rgba(255,255,255,0.02);
-            border-radius: 6px;
-            overflow: hidden;
-            position: relative;
-            border: 1px solid rgba(255,255,255,0.04);
-        }
-
-        .loader-progress-fill {
-            height: 100%;
-            width: 0%;
-            background: linear-gradient(90deg, var(--neon-purple-matrix), var(--neon-cyan-core), var(--neon-pink-glitch));
-            box-shadow: 0 0 12px var(--neon-cyan-core);
-        }
-
-        @keyframes structuralLogFadeIn {
-            to {
-                opacity: 1;
-            }
-        }
-
-        @keyframes structuralGlitchShake {
-            0%, 100% { transform: skew(0deg); }
-            15% { transform: skew(-2deg); }
-            20% { transform: skew(3deg); }
-            35% { transform: skew(0deg); }
-            40% { transform: skew(-4deg); }
-            45% { transform: skew(2deg); }
-        }
-
-        @keyframes structuralGlitchSliceAlpha {
-            0% { clip: rect(12px, 9999px, 45px, 0); }
-            50% { clip: rect(76px, 9999px, 115px, 0); }
-            100% { clip: rect(34px, 9999px, 90px, 0); }
-        }
-
-        @keyframes structuralGlitchSliceBeta {
-            0% { clip: rect(92px, 9999px, 130px, 0); }
-            50% { clip: rect(15px, 9999px, 62px, 0); }
-            100% { clip: rect(80px, 9999px, 125px, 0); }
-        }
-    </style>
-    <style>
-        /* Modern Space Station Nav Bar CSS */
-        .cyber-navigation-station {
+        /* Header Navigation */
+        header {
             position: fixed;
             top: 0;
-            left: 0;
             width: 100%;
-            padding: 24px 8%;
+            z-index: 100;
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(25px) saturate(180%);
+            -webkit-backdrop-filter: blur(25px) saturate(180%);
+            border-bottom: 1px solid var(--glass-border);
+            padding: 16px 6%;
+        }
+
+        .nav-wrapper {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            z-index: 10000;
-            background: rgba(1, 1, 4, 0.4);
-            backdrop-filter: blur(24px);
-            -webkit-backdrop-filter: blur(24px);
-            border-bottom: 1px solid var(--border-cosmic-line);
-            transition: var(--speed-warp-transition);
-        }
-
-        .cyber-navigation-station.docked-state {
-            padding: 16px 8%;
-            background: rgba(2, 2, 8, 0.9);
-            border-color: rgba(0, 240, 255, 0.08);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.6);
-        }
-
-        .identity-logo-anchor {
-            font-family: var(--font-matrix-display);
-            font-weight: 900;
-            font-size: 1.6rem;
-            color: var(--text-ultra-white);
-            text-decoration: none;
-            letter-spacing: 3px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .identity-logo-anchor .core-node {
-            color: var(--neon-cyan-core);
-            text-shadow: 0 0 12px var(--neon-cyan-core);
-        }
-
-        .nav-links-cluster {
-            display: flex;
-            align-items: center;
-            list-style: none;
-            gap: 40px;
-        }
-
-        .nav-links-cluster a {
-            text-decoration: none;
-            font-family: var(--font-matrix-display);
-            font-size: 0.85rem;
-            font-weight: 600;
-            color: var(--text-space-muted);
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            transition: var(--speed-warp-transition);
-            position: relative;
-            padding: 6px 0;
-        }
-
-        .nav-links-cluster a::before {
-            content: '<';
-            margin-right: 6px;
-            opacity: 0;
-            transform: translateX(6px);
-            transition: var(--speed-warp-transition);
-            color: var(--neon-cyan-core);
-        }
-
-        .nav-links-cluster a::after {
-            content: ' />';
-            margin-left: 6px;
-            opacity: 0;
-            transform: translateX(-6px);
-            transition: var(--speed-warp-transition);
-            color: var(--neon-cyan-core);
-        }
-
-        .nav-links-cluster a:hover {
-            color: var(--text-ultra-white);
-            text-shadow: 0 0 12px rgba(0, 240, 255, 0.6);
-        }
-
-        .nav-links-cluster a:hover::before,
-        .nav-links-cluster a:hover::after {
-            opacity: 1;
-            transform: translateX(0);
-        }
-
-        .nav-links-cluster li.active-node-state a {
-            color: var(--neon-cyan-core);
-            text-shadow: 0 0 10px rgba(0, 240, 255, 0.35);
-        }
-
-        .mobile-matrix-toggle {
-            display: none;
-            color: var(--text-ultra-white);
-            font-size: 1.5rem;
-            cursor: pointer;
-            transition: var(--speed-warp-transition);
-        }
-
-        .mobile-matrix-toggle:hover {
-            color: var(--neon-cyan-core);
-        }
-
-        /* Immersive Quantum Hero Section CSS */
-        .hero-quantum-viewport {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            padding: 0 8%;
-            position: relative;
-            z-index: 100;
-            overflow: hidden;
-        }
-
-        .hero-grid-matrix-mesh {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: 
-                linear-gradient(rgba(0, 240, 255, 0.015) 1px, transparent 1px), 
-                linear-gradient(90deg, rgba(0, 240, 255, 0.015) 1px, transparent 1px);
-            background-size: 60px 60px;
-            background-position: center;
-            perspective: 600px;
-            transform: rotateX(65deg) translateY(-35%) scale(2);
-            transform-origin: top center;
-            opacity: 0.45;
-            pointer-events: none;
-            mask-image: linear-gradient(to bottom, rgba(0,0,0,1), transparent);
-            -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1), transparent);
-        }
-
-        .hero-mainframe-panel {
-            max-width: 900px;
-            position: relative;
-        }
-
-        .system-status-pill {
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            background: rgba(0, 240, 255, 0.03);
-            border: 1px solid var(--border-neon-glow);
-            padding: 10px 20px;
-            border-radius: 50px;
-            margin-bottom: 30px;
-            box-shadow: inset 0 0 12px rgba(0, 240, 255, 0.04);
-        }
-
-        .radar-pulse-dot {
-            width: 9px;
-            height: 9px;
-            background-color: var(--neon-cyan-core);
-            border-radius: 50%;
-            position: relative;
-            box-shadow: 0 0 12px var(--neon-cyan-core);
-        }
-
-        .radar-pulse-dot::after {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background: inherit;
-            border-radius: inherit;
-            top: 0;
-            left: 0;
-            animation: structuralRadarPing 2s infinite;
-        }
-
-        @keyframes structuralRadarPing {
-            0% { transform: scale(1); opacity: 1; }
-            100% { transform: scale(3.5); opacity: 0; }
-        }
-
-        .system-status-pill span {
-            font-family: var(--font-matrix-display);
-            font-size: 0.75rem;
-            letter-spacing: 2.5px;
-            color: var(--neon-cyan-core);
-            font-weight: 700;
-            text-transform: uppercase;
-        }
-
-        .hero-mainframe-panel h1 {
-            font-family: var(--font-matrix-display);
-            font-size: 4.8rem;
-            font-weight: 900;
-            line-height: 1.1;
-            letter-spacing: -2px;
-            margin-bottom: 30px;
-            color: var(--text-ultra-white);
-        }
-
-        .dynamic-stream-gradient {
-            background: linear-gradient(90deg, #ffffff 15%, var(--neon-cyan-core), var(--neon-purple-matrix), #ffffff);
-            background-size: 300% auto;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: textGradientFlowLoop 7s linear infinite;
-        }
-
-        @keyframes textGradientFlowLoop {
-            0% { background-position: 0% center; }
-            100% { background-position: 300% center; }
-        }
-
-        .terminal-typewriter-wrapper {
-            font-family: var(--font-terminal-code);
-            font-size: 1.6rem;
-            color: var(--text-cosmic-silver);
-            margin-bottom: 50px;
-            display: flex;
-            align-items: center;
-            min-height: 45px;
-        }
-
-        .terminal-typewriter-wrapper span {
-            color: var(--text-ultra-white);
-            text-shadow: 0 0 8px rgba(255,255,255,0.4);
-        }
-
-        .terminal-custom-cursor {
-            width: 3px;
-            height: 26px;
-            background: var(--neon-cyan-core);
-            margin-left: 10px;
-            animation: dynamicCursorFlash 0.9s infinite;
-            box-shadow: 0 0 12px var(--neon-cyan-core);
-        }
-
-        @keyframes dynamicCursorFlash {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0; }
-        }
-
-        .control-buttons-cluster {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 25px;
-        }
-
-        .btn-quantum-primary {
-            text-decoration: none;
-            font-family: var(--font-matrix-display);
-            font-size: 0.85rem;
-            font-weight: 800;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            color: #000000;
-            background: var(--neon-cyan-core);
-            padding: 18px 40px;
-            border-radius: 4px;
-            box-shadow: 0 0 25px rgba(0, 240, 255, 0.35);
-            position: relative;
-            overflow: hidden;
-            transition: var(--speed-warp-transition);
-            border: 1px solid var(--neon-cyan-core);
-        }
-
-        .btn-quantum-primary:hover {
-            background: transparent;
-            color: var(--neon-cyan-core);
-            box-shadow: 0 0 35px rgba(0, 240, 255, 0.55), inset 0 0 20px rgba(0, 240, 255, 0.2);
-        }
-
-        .btn-quantum-secondary {
-            text-decoration: none;
-            font-family: var(--font-matrix-display);
-            font-size: 0.85rem;
-            font-weight: 800;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            color: var(--text-ultra-white);
-            background: transparent;
-            padding: 18px 40px;
-            border-radius: 4px;
-            border: 1px solid var(--border-cosmic-line);
-            transition: var(--speed-warp-transition);
-            position: relative;
-        }
-
-        .btn-quantum-secondary:hover {
-            border-color: var(--neon-purple-matrix);
-            box-shadow: 0 0 25px rgba(157, 0, 255, 0.35), inset 0 0 15px rgba(157, 0, 255, 0.15);
-            text-shadow: 0 0 6px #ffffff;
-        }
-
-        .viewport-scroll-anchor {
-            position: absolute;
-            bottom: 45px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 12px;
-            text-decoration: none;
-            opacity: 0.5;
-            transition: var(--speed-warp-transition);
-        }
-
-        .viewport-scroll-anchor:hover {
-            opacity: 1;
-        }
-
-        .hardware-mouse-frame {
-            width: 26px;
-            height: 44px;
-            border: 2px solid var(--text-space-muted);
-            border-radius: 24px;
-            position: relative;
-        }
-
-        .hardware-mouse-wheel {
-            width: 4px;
-            height: 8px;
-            background-color: var(--neon-cyan-core);
-            border-radius: 4px;
-            position: absolute;
-            top: 10px;
-            left: 50%;
-            transform: translateX(-50%);
-            animation: structuralWheelMotion 1.6s infinite;
-            box-shadow: 0 0 6px var(--neon-cyan-core);
-        }
-
-        @keyframes structuralWheelMotion {
-            0% { opacity: 1; transform: translateX(-50%) translateY(0); }
-            100% { opacity: 0; transform: translateX(-50%) translateY(16px); }
-        }
-    </style>
-    <style>
-        /* Base Viewport Container Settings */
-        .section-quantum-container {
-            padding: 150px 8%;
-            position: relative;
-            max-width: 1400px;
+            max-width: 1150px;
             margin: 0 auto;
         }
 
-        .scroll-reveal-matrix-box {
-            opacity: 0;
-            transform: translateY(70px) scale(0.97);
-            transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+        .nav-logo {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--text-main);
+            letter-spacing: -0.5px;
         }
 
-        .scroll-reveal-matrix-box.system-visible {
-            opacity: 1;
-            transform: translateY(0) scale(1);
+        .nav-logo span {
+            color: var(--water-blue);
         }
 
-        .component-header-node {
-            margin-bottom: 80px;
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--water-blue);
+        }
+
+        /* Mobile Hamburger Icon */
+        .mobile-menu-btn {
+            display: none;
+            background: transparent;
+            border: none;
+            font-size: 1.6rem;
+            color: var(--text-main);
+            cursor: pointer;
+            outline: none;
+        }
+
+        /* Main Container Setup */
+        .main-container {
+            max-width: 1100px;
+            margin: 120px auto 80px;
+            padding: 0 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 55px;
+        }
+
+        /* Glass Cards Base */
+        .glass-card {
+            background: var(--glass-card-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 28px;
+            padding: 42px;
+            backdrop-filter: blur(30px) saturate(190%);
+            -webkit-backdrop-filter: blur(30px) saturate(190%);
+            box-shadow: var(--glass-shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
             position: relative;
         }
 
-        .component-header-node .system-serial {
-            font-family: var(--font-terminal-code);
-            color: var(--neon-cyan-core);
-            font-size: 0.9rem;
-            display: block;
-            margin-bottom: 10px;
-            letter-spacing: 1.5px;
+        .glass-card:hover {
+            box-shadow: var(--glass-hover-shadow);
+            border-color: rgba(56, 189, 248, 0.5);
         }
 
-        .component-header-node h2 {
-            font-family: var(--font-matrix-display);
-            font-size: 2.6rem;
-            font-weight: 900;
-            letter-spacing: 2px;
-            text-transform: uppercase;
+        /* Badge */
+        .badge {
             display: inline-flex;
             align-items: center;
-            gap: 20px;
-            color: var(--text-ultra-white);
+            gap: 8px;
+            background: rgba(224, 242, 254, 0.85);
+            border: 1px solid rgba(56, 189, 248, 0.4);
+            color: var(--water-blue);
+            font-size: 0.8rem;
+            font-weight: 700;
+            padding: 6px 16px;
+            border-radius: 100px;
+            margin-bottom: 20px;
+            letter-spacing: 0.5px;
         }
 
-        .component-header-node h2::after {
-            content: '';
-            width: 140px;
-            height: 2px;
-            background: linear-gradient(90deg, var(--neon-cyan-core), transparent);
-            display: inline-block;
-            box-shadow: 0 0 10px var(--neon-cyan-core);
+        .badge-dot {
+            width: 8px;
+            height: 8px;
+            background-color: var(--water-blue);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
         }
 
-        /* Identity Profile Structural CSS Grid */
-        .biography-mainframe-layout {
-            display: grid;
-            grid-template-columns: 1.25fr 1fr;
-            gap: 60px;
-            align-items: start;
+        @keyframes pulse {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(2, 132, 199, 0.7); }
+            70% { transform: scale(1); box-shadow: 0 0 0 8px rgba(2, 132, 199, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(2, 132, 199, 0); }
         }
 
-        .glassmorphic-cyber-panel {
-            background: var(--bg-cosmic-card);
-            border: 1px solid var(--border-cosmic-line);
-            backdrop-filter: blur(30px);
-            -webkit-backdrop-filter: blur(30px);
-            border-radius: 16px;
-            padding: 55px;
-            box-shadow: 0 35px 70px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.06);
-            position: relative;
-            overflow: hidden;
+        /* Hero Content */
+        h1.hero-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 3.6rem;
+            font-weight: 700;
+            line-height: 1.12;
+            margin-bottom: 12px;
+            letter-spacing: -1.5px;
         }
 
-        .glassmorphic-cyber-panel::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(255,255,255,0.02) 0%, transparent 100%);
-            pointer-events: none;
+        h1.hero-title span {
+            background: linear-gradient(135deg, var(--water-blue), var(--sky-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
-        .panel-corner-bracket-system::before,
-        .panel-corner-bracket-system::after {
-            content: '';
-            position: absolute;
-            width: 12px;
-            height: 12px;
-            border-color: rgba(0, 240, 255, 0.35);
-            border-style: solid;
-            pointer-events: none;
+        .sub-branding {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 20px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
         }
 
-        .panel-corner-bracket-system::before {
-            top: 18px;
-            left: 18px;
-            border-width: 2px 0 0 2px;
+        p.description {
+            font-size: 1.08rem;
+            color: var(--text-muted);
+            line-height: 1.75;
+            max-width: 850px;
+            margin-bottom: 32px;
         }
 
-        .panel-corner-bracket-system::after {
-            bottom: 18px;
-            right: 18px;
-            border-width: 0 2px 2px 0;
-        }
-
-        .bio-text-stream p {
-            font-size: 1.2rem;
-            line-height: 1.9;
-            color: #e2e8f0;
-            margin-bottom: 30px;
-            font-weight: 300;
-            text-align: justify;
-        }
-
-        .bio-text-stream p strong {
-            font-weight: 600;
-            color: var(--neon-cyan-core);
-            text-shadow: 0 0 6px rgba(0, 240, 255, 0.2);
-        }
-
-        .bio-text-stream p:last-child {
-            margin-bottom: 0;
-        }
-
-        /* Embedded Dynamic Terminal Widget */
-        .terminal-simulator-chassis {
-            background: #010105;
-            border: 1px solid var(--border-cosmic-line);
-            border-radius: 14px;
-            overflow: hidden;
-            box-shadow: 0 25px 50px rgba(0,0,0,0.6);
-        }
-
-        .chassis-header-bar {
-            background: #06060f;
-            padding: 16px 24px;
+        .btn-group {
             display: flex;
-            justify-content: space-between;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .btn-3d {
+            display: inline-flex;
             align-items: center;
-            border-bottom: 1px solid rgba(255,255,255,0.04);
+            gap: 8px;
+            background: rgba(2, 132, 199, 0.9);
+            color: #ffffff;
+            font-size: 0.92rem;
+            font-weight: 700;
+            padding: 14px 30px;
+            border-radius: 16px;
+            text-decoration: none;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            box-shadow: 0 10px 25px rgba(2, 132, 199, 0.25);
+            transition: all 0.3s ease;
         }
 
-        .chassis-control-dots {
+        .btn-3d:hover {
+            transform: translateY(-3px);
+            background: var(--water-blue);
+            box-shadow: 0 15px 35px rgba(2, 132, 199, 0.38);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.85);
+            color: var(--text-main);
+            border: 1px solid rgba(203, 213, 225, 0.8);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+        }
+
+        .btn-secondary:hover {
+            background: #ffffff;
+            border-color: var(--sky-blue);
+        }
+
+        /* Stats Counter Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 18px;
+            margin-top: 10px;
+        }
+
+        .stat-box {
+            background: rgba(255, 255, 255, 0.6);
+            border: 1px solid var(--glass-border);
+            padding: 22px;
+            border-radius: 20px;
+            text-align: center;
+            backdrop-filter: blur(15px);
+        }
+
+        .stat-number {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--water-blue);
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-top: 4px;
+        }
+
+        /* Section Title */
+        .section-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.5rem;
+            color: var(--text-main);
+            margin-bottom: 22px;
+            letter-spacing: -0.5px;
             display: flex;
+            align-items: center;
             gap: 10px;
         }
 
-        .chassis-dot {
-            width: 11px;
-            height: 11px;
+        /* Terminal Simulation Box */
+        .terminal-box {
+            background: #0f172a;
+            color: #38bdf8;
+            font-family: 'Fira Code', monospace;
+            border-radius: 20px;
+            padding: 24px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            overflow-x: auto;
+        }
+
+        .terminal-header {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 16px;
+        }
+
+        .term-dot {
+            width: 12px;
+            height: 12px;
             border-radius: 50%;
-            background: #ff5f56;
         }
 
-        .chassis-dot:nth-child(2) { background: #ffbd2e; }
-        .chassis-dot:nth-child(3) { background: #27c93f; }
+        .red { background: #ef4444; }
+        .yellow { background: #f59e0b; }
+        .green { background: #10b981; }
 
-        .chassis-title-text {
-            font-family: var(--font-terminal-code);
-            font-size: 0.8rem;
-            color: var(--text-space-muted);
-            letter-spacing: 1.2px;
-        }
-
-        .chassis-execution-body {
-            padding: 30px;
-            font-family: var(--font-terminal-code);
+        .terminal-content {
             font-size: 0.9rem;
-            color: #a9b1d6;
-            min-height: 300px;
+            line-height: 1.7;
+            color: #e2e8f0;
         }
 
-        .chassis-prompt {
-            color: var(--neon-pink-glitch);
-            margin-right: 10px;
+        .term-prompt {
+            color: #38bdf8;
+            font-weight: bold;
         }
 
-        .chassis-directory {
-            color: var(--neon-blue-glow);
-            margin-right: 10px;
+        .term-cmd {
+            color: #f1f5f9;
         }
 
-        .chassis-output-row {
-            color: #50fa7b;
-            margin-top: 8px;
-            margin-bottom: 20px;
-            display: none;
+        /* Focus Areas Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .service-card {
+            background: var(--glass-card-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 22px;
+            padding: 28px;
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--sky-blue);
+        }
+
+        .service-icon {
+            font-size: 1.8rem;
+            margin-bottom: 12px;
+        }
+
+        .service-card h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.15rem;
+            margin-bottom: 8px;
+        }
+
+        .service-card p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            line-height: 1.65;
+        }
+
+        /* Tool Stack Grid */
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 16px;
+        }
+
+        .tool-card {
+            background: rgba(255, 255, 255, 0.7);
+            border: 1px solid var(--glass-border);
+            padding: 20px 16px;
+            border-radius: 18px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .tool-card:hover {
+            background: #ffffff;
+            border-color: var(--sky-blue);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(14, 165, 233, 0.08);
+        }
+
+        .tool-name {
+            font-weight: 700;
+            font-size: 0.95rem;
+            color: var(--text-main);
+            margin-bottom: 4px;
+        }
+
+        .tool-type {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+        }
+
+        /* Articles / Knowledge Base Grid */
+        .kb-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .kb-card {
+            background: var(--glass-card-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 22px;
+            padding: 26px;
+            transition: all 0.3s ease;
+        }
+
+        .kb-card:hover {
+            border-color: var(--sky-blue);
+            transform: translateY(-3px);
+        }
+
+        .kb-card h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+            color: var(--text-main);
+        }
+
+        .kb-card p {
+            font-size: 0.88rem;
+            color: var(--text-muted);
             line-height: 1.6;
         }
 
-        /* Interactive Knowledge Deck CSS Grid */
-        .skills-matrix-viewport-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 35px;
-        }
-
-        .knowledge-interactive-card {
-            background: var(--bg-cosmic-card);
-            border: 1px solid var(--border-cosmic-line);
-            border-radius: 14px;
-            padding: 45px 35px;
-            text-align: center;
-            position: relative;
-            transition: var(--speed-warp-transition);
-            cursor: pointer;
-            overflow: hidden;
-        }
-
-        .knowledge-interactive-card i {
-            font-size: 3.8rem;
-            margin-bottom: 30px;
-            display: inline-block;
-            transition: var(--speed-warp-transition);
-        }
-
-        .knowledge-interactive-card h3 {
-            font-family: var(--font-matrix-display);
-            font-size: 1.15rem;
-            font-weight: 700;
-            letter-spacing: 1.2px;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-            color: var(--text-ultra-white);
-        }
-
-        .quantum-card-progress-track {
-            width: 100%;
-            height: 3px;
-            background: rgba(255,255,255,0.04);
-            border-radius: 6px;
-            overflow: hidden;
-            margin-top: 20px;
-            opacity: 0;
-            transition: var(--speed-warp-transition);
-        }
-
-        .quantum-card-progress-bar {
-            height: 100%;
-            width: 0%;
-            background: var(--neon-cyan-core);
-            box-shadow: 0 0 10px var(--neon-cyan-core);
-            transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .knowledge-interactive-card:hover {
-            background: var(--bg-card-hover);
-            transform: translateY(-8px);
-            border-color: rgba(255,255,255,0.15);
-        }
-
-        .knowledge-interactive-card[data-tech-node="html"]:hover {
-            box-shadow: 0 20px 40px rgba(227, 79, 38, 0.18);
-            border-color: #e34f26;
-        }
-
-        .knowledge-interactive-card[data-tech-node="html"]:hover i { color: #e34f26; transform: scale(1.15) rotate(4deg); }
-
-        .knowledge-interactive-card[data-tech-node="css"]:hover {
-            box-shadow: 0 20px 40px rgba(21, 114, 182, 0.18);
-            border-color: #1572b6;
-        }
-
-        .knowledge-interactive-card[data-tech-node="css"]:hover i { color: #1572b6; transform: scale(1.15) rotate(-4deg); }
-
-        .knowledge-interactive-card[data-tech-node="js"]:hover {
-            box-shadow: 0 20px 40px rgba(247, 223, 30, 0.18);
-            border-color: #f7df1e;
-        }
-
-        .knowledge-interactive-card[data-tech-node="js"]:hover i { color: #f7df1e; transform: scale(1.15) rotate(4deg); }
-
-        .knowledge-interactive-card[data-tech-node="python"]:hover {
-            box-shadow: 0 20px 40px rgba(55, 118, 171, 0.18);
-            border-color: #3776ab;
-        }
-
-        .knowledge-interactive-card[data-tech-node="python"]:hover i { color: #3776ab; transform: scale(1.15) rotate(-4deg); }
-
-        .knowledge-interactive-card[data-tech-node="network"]:hover {
-            box-shadow: 0 20px 40px rgba(0, 240, 255, 0.18);
-            border-color: var(--neon-cyan-core);
-        }
-
-        .knowledge-interactive-card[data-tech-node="network"]:hover i { color: var(--neon-cyan-core); transform: scale(1.15) rotate(4deg); }
-
-        .knowledge-interactive-card:hover .quantum-card-progress-track {
-            opacity: 1;
-        }
-
-        /* Production Deployments System CSS Grid */
-        .production-deployments-showcase {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
-            gap: 50px;
-        }
-
-        .production-hyperlink-card {
-            background: var(--bg-cosmic-card);
-            border: 1px solid var(--border-cosmic-line);
-            border-radius: 16px;
-            padding: 50px;
-            position: relative;
-            overflow: hidden;
-            transition: var(--speed-warp-transition);
-            text-decoration: none;
-            color: inherit;
+        /* Timeline Roadmap */
+        .timeline {
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
+            gap: 24px;
+            position: relative;
+            padding-left: 24px;
+            border-left: 2px solid rgba(56, 189, 248, 0.35);
         }
 
-        .production-hyperlink-card::after {
+        .timeline-item {
+            position: relative;
+        }
+
+        .timeline-item::before {
             content: '';
             position: absolute;
-            width: 100%;
-            height: 4px;
-            background: linear-gradient(90deg, var(--neon-cyan-core), var(--neon-purple-matrix), var(--neon-pink-glitch));
-            bottom: 0;
-            left: -100%;
-            transition: var(--speed-warp-transition);
+            left: -31px;
+            top: 4px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--water-blue);
+            box-shadow: 0 0 10px var(--sky-blue);
         }
 
-        .production-hyperlink-card:hover::after {
-            left: 0;
+        .timeline-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.15rem;
+            font-weight: 700;
         }
 
-        .production-hyperlink-card:hover {
-            transform: translateY(-12px) scale(1.02);
-            border-color: rgba(0, 240, 255, 0.3);
-            box-shadow: 0 30px 60px rgba(0,0,0,0.6), 0 0 35px rgba(0, 240, 255, 0.08);
+        .timeline-desc {
+            font-size: 0.92rem;
+            color: var(--text-muted);
+            margin-top: 6px;
+            line-height: 1.6;
         }
 
-        .card-metadata-row {
+        /* Skills Tags Grid */
+        .skills-grid {
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 30px;
-        }
-
-        .meta-badges-strip {
-            display: flex;
+            flex-wrap: wrap;
             gap: 12px;
         }
 
-        .meta-system-badge {
-            background: rgba(255,255,255,0.02);
-            border: 1px solid var(--border-cosmic-line);
-            padding: 6px 14px;
-            border-radius: 4px;
-            font-family: var(--font-terminal-code);
-            font-size: 0.75rem;
-            color: var(--text-space-muted);
-            text-transform: uppercase;
+        .skill-tag {
+            background: rgba(255, 255, 255, 0.75);
+            border: 1px solid var(--glass-border);
+            padding: 10px 18px;
+            border-radius: 14px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-main);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+            transition: all 0.3s ease;
         }
 
-        .production-hyperlink-card:hover .meta-system-badge {
-            border-color: rgba(0, 240, 255, 0.2);
-            color: var(--text-ultra-white);
+        .skill-tag:hover {
+            background: #ffffff;
+            border-color: var(--sky-blue);
+            color: var(--water-blue);
+            transform: translateY(-2px);
         }
 
-        .action-node-indicator {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.02);
-            border: 1px solid var(--border-cosmic-line);
+        /* Projects Grid */
+        .grid-3d {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 22px;
+        }
+
+        .grid-card {
+            background: var(--glass-card-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 30px;
             display: flex;
-            justify-content: center;
-            align-items: center;
-            transition: var(--speed-warp-transition);
-            color: var(--text-space-muted);
+            flex-direction: column;
+            justify-content: space-between;
+            backdrop-filter: blur(25px);
+            box-shadow: var(--glass-shadow);
+            transition: all 0.4s ease;
         }
 
-        .production-hyperlink-card:hover .action-node-indicator {
-            background: var(--neon-cyan-core);
-            border-color: var(--neon-cyan-core);
-            color: #000000;
-            box-shadow: 0 0 20px var(--neon-cyan-core);
+        .grid-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(56, 189, 248, 0.5);
+            box-shadow: var(--glass-hover-shadow);
         }
 
-        .production-hyperlink-card h3 {
-            font-family: var(--font-matrix-display);
-            font-size: 1.45rem;
+        .grid-card h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            color: var(--text-main);
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        .grid-card p {
+            color: var(--text-muted);
+            font-size: 0.93rem;
+            line-height: 1.65;
+            margin-bottom: 20px;
+        }
+
+        .card-link {
+            font-size: 0.88rem;
+            color: var(--water-blue);
+            text-decoration: none;
             font-weight: 700;
-            letter-spacing: 1.2px;
-            margin-bottom: 22px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.3s ease;
+        }
+
+        .card-link:hover {
+            color: #0369a1;
+            transform: translateX(4px);
+        }
+
+        /* Contact Grid */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 18px;
+        }
+
+        .contact-item {
+            background: rgba(255, 255, 255, 0.65);
+            border: 1px solid var(--glass-border);
+            padding: 20px;
+            border-radius: 20px;
+            text-decoration: none;
+            color: var(--text-main);
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            background: #ffffff;
+            border-color: var(--sky-blue);
+            transform: translateY(-3px);
+        }
+
+        .contact-item h4 {
+            font-size: 0.8rem;
+            color: var(--text-muted);
             text-transform: uppercase;
-            color: var(--text-ultra-white);
-            transition: var(--speed-warp-transition);
+            letter-spacing: 0.5px;
+            margin-bottom: 6px;
         }
 
-        .production-hyperlink-card:hover h3 {
-            color: var(--neon-cyan-core);
-            text-shadow: 0 0 12px rgba(0, 240, 255, 0.25);
+        .contact-item p {
+            font-weight: 700;
+            font-size: 0.95rem;
+            color: var(--water-blue);
+            word-break: break-all;
         }
 
-        .production-hyperlink-card p {
-            color: var(--text-space-muted);
-            line-height: 1.85;
-            font-size: 1.05rem;
-            font-weight: 300;
-            text-align: justify;
-        }
-
-        .production-hyperlink-card:hover p {
-            color: var(--text-cosmic-silver);
-        }
-
-        /* Quantum Terminal Footer System */
-        .mainframe-terminal-footer {
-            border-top: 1px solid var(--border-cosmic-line);
-            padding: 60px 8%;
+        /* Footer */
+        footer {
             text-align: center;
-            background: rgba(1, 1, 4, 0.98);
-            position: relative;
-            z-index: 200;
+            padding: 35px 0;
+            color: var(--text-muted);
+            font-size: 0.88rem;
+            border-top: 1px solid rgba(226, 232, 240, 0.8);
         }
 
-        .mainframe-terminal-footer p {
-            font-family: var(--font-matrix-display);
-            font-size: 0.85rem;
-            letter-spacing: 4px;
-            color: var(--text-space-muted);
-            text-transform: uppercase;
-        }
-
-        .mainframe-terminal-footer p span {
-            color: var(--neon-cyan-core);
-            font-weight: 800;
-        }
-
-        /* Responsive Viewport Grid Control Systems */
-        @media (max-width: 1200px) {
-            .biography-mainframe-layout {
-                grid-template-columns: 1fr;
-                gap: 50px;
-            }
-        }
-
-        @media (max-width: 992px) {
-            html { font-size: 15px; }
-            .hero-mainframe-panel h1 { font-size: 3.8rem; }
-            .production-deployments-showcase { grid-template-columns: 1fr; }
-        }
-
+              /* Compact Floating Corner Mobile Menu */
         @media (max-width: 768px) {
-            html { font-size: 14px; }
-            .cyber-navigation-station { padding: 20px 6%; }
-            .nav-links-cluster { display: none; }
-            .mobile-matrix-toggle { display: block; }
-            .hero-quantum-viewport { padding: 0 6%; }
-            .hero-mainframe-panel h1 { font-size: 3.2rem; }
-            .section-quantum-container { padding: 110px 6%; }
-            .glassmorphic-cyber-panel { padding: 35px; }
-            .production-hyperlink-card { padding: 35px; }
-        }
-    </style>
+            h1.hero-title { font-size: 2.3rem; }
+            .glass-card { padding: 24px; }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+
+                .nav-links { 
+                position: absolute;
+                top: 65px;
+                right: 6%;
+                width: 155px; /* Compact & slim corner width */
+                
+                /* Pure Frosty White Background */
+                background: rgba(255, 255, 255, 0.88);
+                backdrop-filter: blur(25px) saturate(200%);
+                -webkit-backdrop-filter: blur(25px) saturate(200%);
+                
+                flex-direction: column;
+                align-items: stretch;
+                gap: 3px;
+                padding: 8px;
+                
+                /* Sharp Icy-Blue Glowing Glass Border & Shadow */
+                border: 1.5px solid rgba(56, 189, 248, 0.6);
+                border-radius: 16px;
+                box-shadow: 0 0 20px rgba(56, 189, 248, 0.25), 
+                            0 12px 30px rgba(14, 165, 233, 0.15), 
+                            inset 0 1px 2px rgba(255, 255, 255, 1);
+                
+                display: none;
+                z-index: 200;
+            }
+
+            .nav-links.mobile-active {
+                display: flex;
+            }
+
+            .nav-links a {
+                font-size: 0.8rem;
+                font-weight: 700;
+                color: #0f172a;
+                padding: 8px 12px;
+                width: 100%;
+                text-align: left;
+                border-radius: 10px;
+                transition: all 0.2s ease;
+            }
+
+            .nav-links a:hover {
+                background: rgba(224, 242, 254, 0.8); /* Light Ice Blue Hover */
+                color: #0284c7;
+                transform: translateX(2px);
+            }
+            
+                       </style>
 </head>
 <body>
-    <!-- Immersive Systems Initialization Canvas Overlay -->
-    <div id="cyber-mainframe-loader">
-        <div class="loader-interface-box">
-            <div class="loader-glitch-headline">SHIVANSH GOSWAMI</div>
-            <div class="loader-terminal-stream" id="loader-terminal-anchor"></div>
-            <div class="loader-progress-track">
-                <div class="loader-progress-fill" id="loader-progress-fluid-bar"></div>
-            </div>
-        </div>
+
+    <!-- Ambient Background Blobs -->
+    <div class="aura-container">
+        <div class="aura-blob blob-1"></div>
+        <div class="aura-blob blob-2"></div>
+        <div class="aura-blob blob-3"></div>
     </div>
 
-    <!-- Cosmic Background Simulation Canvas Nodes -->
-    <div class="ambient-space-matrix">
-        <div class="quantum-nebula-cluster nebula-node-alpha"></div>
-        <div class="quantum-nebula-cluster nebula-node-beta"></div>
-        <div class="quantum-nebula-cluster nebula-node-gamma"></div>
-        <canvas id="starfield-canvas-core"></canvas>
-        <canvas id="dust-particle-canvas"></canvas>
+    <!-- Header Navigation -->
+    <header>
+        <div class="nav-wrapper">
+            <div class="nav-logo">SHIVANSH<span>.STUDIO</span></div>
+            <button class="mobile-menu-btn" id="menuToggle" aria-label="Toggle Menu">☰</button>
+            <div class="nav-links" id="navLinks">
+                <a href="#about">ABOUT</a>
+                <a href="#terminal">TERMINAL</a>
+                <a href="#toolkit">TOOLKIT</a>
+                <a href="#skills">SKILLS</a>
+                <a href="#roadmap">ROADMAP</a>
+                <a href="#knowledge">KNOWLEDGE</a>
+                <a href="#projects">PROJECTS</a>
+                <a href="#contact">CONNECT</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="main-container">
+        
+        <!-- Hero Section -->
+        <div class="glass-card scroll-reveal" id="about">
+            <span class="badge"><div class="badge-dot"></div> CYBERSECURITY RESEARCH & DEVELOPMENT</span>
+            <h1 class="hero-title">Shivansh <span>Goswami</span></h1>
+            
+            <div class="sub-branding">Cybersecurity Enthusiast & Developer</div>
+            
+            <p class="description">
+                A driven 17-year-old tech enthusiast specializing in Cybersecurity and Networking. With intermediate skills in Python, Linux administration, and Frontend Development (HTML/CSS), I focus on understanding security fundamentals, automating tasks, and continuous learning in the cybersecurity landscape.
+            </p>
+
+            <div class="btn-group">
+                <a href="#projects" class="btn-3d">EXPLORE PROJECTS ⚡</a>
+                <a href="#contact" class="btn-3d btn-secondary">CONNECT WITH ME 📬</a>
+            </div>
+
+            <!-- Stats Counter Grid -->
+            <div class="stats-grid" style="margin-top: 35px;">
+                <div class="stat-box">
+                    <div class="stat-number">17</div>
+                    <div class="stat-label">Age & Passion</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">Python</div>
+                    <div class="stat-label">Intermediate</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">Linux</div>
+                    <div class="stat-label">Environment</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">2+</div>
+                    <div class="stat-label">Live Platforms</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Terminal Interactive Section -->
+        <div class="scroll-reveal" id="terminal">
+            <h2 class="section-title">🖥 CYBER MAINFRAME TERMINAL</h2>
+            <div class="terminal-box">
+                <div class="terminal-header">
+                    <div class="term-dot red"></div>
+                    <div class="term-dot yellow"></div>
+                    <div class="term-dot green"></div>
+                </div>
+                <div class="terminal-content">
+                    <p><span class="term-prompt">shivansh@cyber-lab:~$</span> <span class="term-cmd">whoami</span></p>
+                    <p style="color: #a7f3d0; margin-bottom: 10px;">> Shivansh Goswami | Cybersecurity Enthusiast & System Analyst (Age 17)</p>
+                    
+                    <p><span class="term-prompt">shivansh@cyber-lab:~$</span> <span class="term-cmd">cat capabilities.json</span></p>
+                    <p style="color: #bae6fd; margin-bottom: 10px;">> ["Networking Basics", "Linux Shell & Automation", "Python Scripting", "Frontend Architecture", "Web Security Research"]</p>
+                    
+                    <p><span class="term-prompt">shivansh@cyber-lab:~$</span> <span class="term-cmd">systemctl status ethics-and-goals</span></p>
+                    <p style="color: #fef08a;">> ACTIVE (Ethical Hacking Practice, Continuous Learning, System Hardening)</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Focus Areas Grid -->
+        <div class="scroll-reveal">
+            <h2 class="section-title">🛡️ FOCUS AREAS & INTERESTS</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">🌐</div>
+                    <h3>Network & System Security</h3>
+                    <p>Analyzing protocols (TCP/IP, DNS, HTTP/S), network packet flows, router configurations, and Linux server defense mechanisms.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🐍</div>
+                    <h3>Python Security Scripting</h3>
+                    <p>Writing custom scripts for task automation, system monitoring, web scraping, and basic vulnerability testing tools.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">💻</div>
+                    <h3>Web Engineering & UI</h3>
+                    <p>Designing modern, high-performance glassmorphic web portals, education tools, and interactive digital interfaces.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Security Toolkit Grid -->
+        <div class="scroll-reveal" id="toolkit">
+            <h2 class="section-title">🛠 TOOLKIT & WORKFLOW STACK</h2>
+            <div class="tools-grid">
+                <div class="tool-card">
+                    <div class="tool-name">Linux OS</div>
+                    <div class="tool-type">Debian / Kali / Ubuntu</div>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-name">Python 3</div>
+                    <div class="tool-type">Automation & Logic</div>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-name">Wireshark</div>
+                    <div class="tool-type">Packet Analysis</div>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-name">Nmap</div>
+                    <div class="tool-type">Network Scanning</div>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-name">Bash CLI</div>
+                    <div class="tool-type">Shell Scripting</div>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-name">Git & GitHub</div>
+                    <div class="tool-type">Version Control</div>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-name">Termux</div>
+                    <div class="tool-type">Mobile CLI Lab</div>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-name">HTML & CSS</div>
+                    <div class="tool-type">Frontend Architecture</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Skills Section -->
+        <div class="scroll-reveal" id="skills">
+            <h2 class="section-title">💻 SKILLS & KNOWLEDGE BASE</h2>
+            <div class="skills-grid">
+                <div class="skill-tag">Cybersecurity Fundamentals</div>
+                <div class="skill-tag">Networking Protocols (TCP/IP, UDP)</div>
+                <div class="skill-tag">Linux System Administration</div>
+                <div class="skill-tag">Python (Intermediate)</div>
+                <div class="skill-tag">HTML5 / CSS3 (Intermediate)</div>
+                <div class="skill-tag">Responsive UI & Glassmorphism</div>
+                <div class="skill-tag">Git & GitHub Workflow</div>
+                <div class="skill-tag">Termux & Mobile CLI</div>
+                <div class="skill-tag">Security Automation Scripts</div>
+                <div class="skill-tag">Ethical Hacking Practice</div>
+            </div>
+        </div>
+
+        <!-- Roadmap Timeline Section -->
+        <div class="glass-card scroll-reveal" id="roadmap">
+            <h2 class="section-title">🚀 LEARNING ROADMAP & TARGETS</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-title">Phase 1: Web Development & Scripting Foundations</div>
+                    <div class="timeline-desc">Built web platforms, mastered HTML/CSS layouts, and developed intermediate Python programming skills for logic building.</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-title">Phase 2: Linux Administration & Network Deep-Dive</div>
+                    <div class="timeline-desc">Mastered command-line operations, file system structures, user permissions, and network protocol fundamentals.</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-title">Phase 3: Ethical Hacking & Security Certifications (Target)</div>
+                    <div class="timeline-desc">Preparing for certifications (CompTIA Security+, eJPT) while practicing ethical vulnerability assessments in controlled lab environments.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Knowledge Base & Articles Section -->
+        <div class="scroll-reveal" id="knowledge">
+            <h2 class="section-title">📖 CYBER KNOWLEDGE BASE</h2>
+            <div class="kb-grid">
+                <div class="kb-card">
+                    <h3>01. Fundamentals of Network Defense</h3>
+                    <p>Understanding how firewalls, subnets, and packet inspection protect modern network architectures against unauthorized intrusions.</p>
+                </div>
+                <div class="kb-card">
+                    <h3>02. Linux Hardening & Permissions</h3>
+                    <p>Configuring strict SUID/GUID settings, SSH key authentication, and minimal privilege user access on Linux servers.</p>
+                </div>
+                <div class="kb-card">
+                    <h3>03. Web Application Security (OWASP Top 10)</h3>
+                    <p>Exploring SQL Injections, Cross-Site Scripting (XSS), and Broken Access Controls to build resilient web applications.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Projects Grid -->
+        <div id="projects" class="scroll-reveal">
+            <h2 class="section-title">⚡ FEATURED PROJECTS</h2>
+            
+            <div class="grid-3d">
+                <div class="grid-card">
+                    <div>
+                        <h3>🏫 SILVER CITY ACADEMY HUB</h3>
+                        <p>An interactive digital platform designed for academic resource management, featuring cognitive diagnostic systems and educational interfaces.</p>
+                    </div>
+                    <a href="https://serieshollywood307-ops.github.io/Shivansh-giri-Silver-City-academy-/" target="_blank" rel="noopener noreferrer" class="card-link">VIEW PROJECT ↗</a>
+                </div>
+
+                <div class="grid-card">
+                    <div>
+                        <h3>📚 2026 BOARD EXAM NOTES</h3>
+                        <p>A structured, high-yield study notes engine engineered for CBSE Class 10 board exams, optimizing quick revision and conceptual clarity.</p>
+                    </div>
+                    <a href="https://serieshollywood307-ops.github.io/2026-Notes-for-boards/" target="_blank" rel="noopener noreferrer" class="card-link">VIEW PROJECT ↗</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact Section -->
+        <div class="glass-card scroll-reveal" id="contact">
+            <h2 class="section-title">📬 CONNECT WITH ME</h2>
+            <p class="description" style="margin-bottom: 24px;">
+                Feel free to connect on social platforms or explore my code repositories!
+            </p>
+
+            <div class="contact-grid">
+                <a href="https://github.com/serieshollywood307-ops" target="_blank" rel="noopener noreferrer" class="contact-item">
+                    <h4>GitHub Profile</h4>
+                    <p>@serieshollywood307-ops ↗</p>
+                </a>
+                <a href="https://www.instagram.com/shivansh_goswami_75?stkn=dm5ubXY4aHNpZWg5" target="_blank" rel="noopener noreferrer" class="contact-item">
+                    <h4>Instagram Profile</h4>
+                    <p>@shivansh_goswami_75 ↗</p>
+                </a>
+            </div>
+        </div>
+
     </div>
 
-    <!-- Active Mainframe Navigation Header -->
-    <nav class="cyber-navigation-station" id="cyber-navbar">
-        <a href="#" class="identity-logo-anchor">SHIVANSH<span class="core-node">_CORE</span></a>
-        <div class="mobile-matrix-toggle"><i class="fas fa-bars"></i></div>
-        <ul class="nav-links-cluster">
-            <li class="active-node-state"><a href="#">Home</a></li>
-            <li><a href="#about">About Base</a></li>
-            <li><a href="#skills">Skill Matrix</a></li>
-            <li><a href="#projects">Deployments</a></li>
-        </ul>
-    </nav>
-
-    <!-- Interactive Spatial Hero Module -->
-    <section class="hero-quantum-viewport">
-        <div class="hero-grid-matrix-mesh"></div>
-        <div class="hero-mainframe-panel">
-            <div class="system-status-pill">
-                <div class="radar-pulse-dot"></div>
-                <span>QUANTUM ENGINE INTERFACE ACTIVE // SECURE ACCESS</span>
-            </div>
-            <h1>CONSTRUCTING THE DIGITAL<br><span class="dynamic-stream-gradient">REALITY OF SHIVANSH</span></h1>
-            <div class="terminal-typewriter-wrapper">
-                >&nbsp;<span id="hero-typewriter-target"></span><div class="terminal-custom-cursor"></div>
-            </div>
-            <div class="control-buttons-cluster">
-                <a href="#about" class="btn-quantum-primary">Access Database</a>
-                <a href="#projects" class="btn-quantum-secondary">View Deployments</a>
-            </div>
-        </div>
-        <a href="#about" class="viewport-scroll-anchor">
-            <div class="hardware-mouse-frame"><div class="hardware-mouse-wheel"></div></div>
-        </a>
-    </section>
-
-    <!-- Section 01: Core Metadata Identification Profile -->
-    <section id="about" class="section-quantum-container scroll-reveal-matrix-box">
-        <div class="component-header-node">
-            <span class="system-serial">01 // STRUCTURAL METADATA IDENTITY</span>
-            <h2>About Base</h2>
-        </div>
-        <div class="biography-mainframe-layout">
-            <div class="glassmorphic-cyber-panel">
-                <div class="panel-corner-bracket-system"></div>
-                <div class="bio-text-stream">
-                    <p>Greetings! I am <strong>Shivansh Goswami</strong>, a passionate forward-looking tech enthusiast and developer hailing from <strong>Lakhimpur Kheri, Uttar Pradesh</strong>. Currently expanding my logical horizons in <strong>Class 11</strong>, I focus my energy on creating sleek digital environments and unravelling complex code logic.</p>
-                    <p>While traditional milestones like my <strong>Class 10 boards gave me a steady base with a solid 66% score</strong>, my true technical playground spans outside textbook limits. I have a continuous drive to construct advanced frontend systems and explore structural network designs.</p>
-                    <p>For me, coding isn't just about syntax—it's about engineering custom realities. I thrive on translating abstract ideas into optimized, highly-aesthetic realities.</p>
-                </div>
-            </div>
-            <div class="terminal-simulator-chassis">
-                <div class="chassis-header-bar">
-                    <div class="chassis-control-dots"><div class="chassis-dot"></div><div class="chassis-dot"></div><div class="chassis-dot"></div></div>
-                    <div class="chassis-title-text">bash - mainframe_core.sh</div>
-                </div>
-                <div class="chassis-execution-body" id="terminal-simulator-anchor-body">
-                    <span class="chassis-prompt">guest@shivansh_core:~$</span><span class="chassis-command-text">cat objective_matrix.txt</span>
-                    <div class="chassis-output-row" id="terminal-chassis-output-target">> Initializing core objective protocol...<br>> Status: Active.<br>> Focus area: Advanced security architectures, modular scripting frameworks, and deep aesthetic user experience paradigms. Everything clean, everything functional.</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Section 02: Knowledge Parameter Node Grid Array -->
-    <section id="skills" class="section-quantum-container scroll-reveal-matrix-box">
-        <div class="component-header-node">
-            <span class="system-serial">02 // KNOWLEDGE PARAMETER DATA ARRAY</span>
-            <h2>Skill Matrix</h2>
-        </div>
-        <div class="skills-matrix-viewport-grid">
-            <div class="knowledge-interactive-card" data-tech-node="html" data-target-percentage="95">
-                <i class="fab fa-html5" style="color: #e34f26;"></i><h3>HTML5 Semantic</h3>
-                <div class="quantum-card-progress-track"><div class="quantum-card-progress-bar" style="background: #e34f26; box-shadow: 0 0 10px #e34f26;"></div></div>
-            </div>
-            <div class="knowledge-interactive-card" data-tech-node="css" data-target-percentage="90">
-                <i class="fab fa-css3-alt" style="color: #1572b6;"></i><h3>CSS3 Grid System</h3>
-                <div class="quantum-card-progress-track"><div class="quantum-card-progress-bar" style="background: #1572b6; box-shadow: 0 0 10px #1572b6;"></div></div>
-            </div>
-            <div class="knowledge-interactive-card" data-tech-node="js" data-target-percentage="75">
-                <i class="fab fa-js" style="color: #f7df1e;"></i><h3>JavaScript Engine</h3>
-                <div class="quantum-card-progress-track"><div class="quantum-card-progress-bar" style="background: #f7df1e; box-shadow: 0 0 10px #f7df1e;"></div></div>
-            </div>
-            <div class="knowledge-interactive-card" data-tech-node="python" data-target-percentage="80">
-                <i class="fab fa-python" style="color: #3776ab;"></i><h3>Python Core</h3>
-                <div class="quantum-card-progress-track"><div class="quantum-card-progress-bar" style="background: #3776ab; box-shadow: 0 0 10px #3776ab;"></div></div>
-            </div>
-            <div class="knowledge-interactive-card" data-tech-node="network" data-target-percentage="70">
-                <i class="fas fa-terminal" style="color: var(--neon-cyan-core);"></i><h3>Network Frameworks</h3>
-                <div class="quantum-card-progress-track"><div class="quantum-card-progress-bar"></div></div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Section 03: Live Active Production Builds -->
-    <section id="projects" class="section-quantum-container scroll-reveal-matrix-box">
-        <div class="component-header-node">
-            <span class="system-serial">03 // ACTIVE DEPLOYMENTS COMPILATION</span>
-            <h2>Production Build Output</h2>
-        </div>
-        <div class="production-deployments-showcase">
-            <!-- School Project Matrix Hyperlink -->
-            <a href="https://serieshollywood307-ops.github.io/Shivansh-giri-Silver-City-academy-/" target="_blank" class="production-hyperlink-card">
-                <div class="card-metadata-row">
-                    <div class="meta-badges-strip"><span class="meta-system-badge">HTML5 Architecture</span><span class="meta-system-badge">CSS3 Custom</span></div>
-                    <div class="action-node-indicator"><i class="fas fa-external-link-alt"></i></div>
-                </div>
-                <div>
-                    <h3>Silver City Academy Ecosystem</h3>
-                    <p>A dark space-inspired architectural interface engineered purposefully for an academic structural model. Deployed using custom semantic structural rules, multi-viewport layout configurations, complex hover interaction matrices, and full fluid rendering optimization.</p>
-                </div>
-            </a>
-            <div class="production-hyperlink-card">
-                <div class="card-metadata-row">
-                    <div class="meta-badges-strip"><span class="meta-system-badge">Native Engine JS</span><span class="meta-system-badge">CSS Micro-Glow</span></div>
-                    <div class="action-node-indicator"><i class="fas fa-lock"></i></div>
-                </div>
-                <div>
-                    <h3>Quantum Identity Hub v3.0</h3>
-                    <p>The interface system you are currently tracking. A complex high-aesthetic single-file production construct featuring interactive spatial canvas dust backdrops, progressive system diagnostics loader, fluid viewport tracking, and complex node expansions.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Active Production Mainframe Footer -->
-    <footer class="mainframe-terminal-footer">
-        <p>&copy; 2026 <span>SHIVANSH GOSWAMI</span> | MATRIX SECURITY NODE DEPLOYED</p>
+    <footer>
+        <p>© 2026 Shivansh Goswami | Chief Architect & Cybersecurity Specialist</p>
     </footer>
-    <script>
-        /* Cosmic Spatial Background Canvas Core Engine Script */
-        const primaryCanvasInstance = document.getElementById('starfield-canvas-core');
-        const secondaryCanvasCtx = primaryCanvasInstance.getContext('2d');
-        
-        const tertiaryCanvasInstance = document.getElementById('dust-particle-canvas');
-        const quaternaryCanvasCtx = tertiaryCanvasInstance.getContext('2d');
-        
-        let customStarsPool = [];
-        let customDustPool = [];
-        let internalSystemDeviceCoordinates = { x: null, y: null };
 
-        function structuralRecomputeViewports() {
-            primaryCanvasInstance.width = window.innerWidth;
-            primaryCanvasInstance.height = window.innerHeight;
-            tertiaryCanvasInstance.width = window.innerWidth;
-            tertiaryCanvasInstance.height = window.innerHeight;
-            initializeQuantumEcosystemSpace();
-        }
+    <!-- Scroll & Motion Script -->
+       <script>
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
 
-        function initializeQuantumEcosystemSpace() {
-            customStarsPool = [];
-            customDustPool = [];
-            
-            const totalCalculatedStarsDensity = Math.floor((primaryCanvasInstance.width * primaryCanvasInstance.height) / 2000);
-            for (let i = 0; i < totalCalculatedStarsDensity; i++) {
-                customStarsPool.push({
-                    x: Math.random() * primaryCanvasInstance.width,
-                    y: Math.random() * primaryCanvasInstance.height,
-                    radius: Math.random() * 1.5,
-                    luminosityValue: Math.random(),
-                    oscillationVelocity: Math.random() * 0.012 + 0.004
-                });
-            }
+        // Toggle button click logic
+        menuToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            navLinks.classList.toggle('mobile-active');
+            menuToggle.textContent = navLinks.classList.contains('mobile-active') ? '✕' : '☰';
+        });
 
-            const totalCalculatedDustDensity = Math.floor((tertiaryCanvasInstance.width * tertiaryCanvasInstance.height) / 8000);
-            for (let j = 0; j < totalCalculatedDustDensity; j++) {
-                customDustPool.push({
-                    x: Math.random() * tertiaryCanvasInstance.width,
-                    y: Math.random() * tertiaryCanvasInstance.height,
-                    radius: Math.random() * 2.5 + 0.5,
-                    opacityValue: Math.random() * 0.5 + 0.1,
-                    driftSpeedX: (Math.random() - 0.5) * 0.15,
-                    driftSpeedY: (Math.random() - 0.5) * 0.15
-                });
-            }
-        }
-
-        function structuralRenderEcosystemLoop() {
-            secondaryCanvasCtx.clearRect(0, 0, primaryCanvasInstance.width, primaryCanvasInstance.height);
-            secondaryCanvasCtx.fillStyle = '#ffffff';
-            
-            customStarsPool.forEach(nodeStar => {
-                secondaryCanvasCtx.globalAlpha = nodeStar.luminosityValue;
-                secondaryCanvasCtx.beginPath();
-                secondaryCanvasCtx.arc(nodeStar.x, nodeStar.y, nodeStar.radius, 0, Math.PI * 2);
-                secondaryCanvasCtx.fill();
-                
-                nodeStar.luminosityValue += nodeStar.oscillationVelocity;
-                if (nodeStar.luminosityValue > 1 || nodeStar.luminosityValue < 0) {
-                    nodeStar.oscillationVelocity = -nodeStar.oscillationVelocity;
-                }
-            });
-
-            quaternaryCanvasCtx.clearRect(0, 0, tertiaryCanvasInstance.width, tertiaryCanvasInstance.height);
-            quaternaryCanvasCtx.fillStyle = 'rgba(0, 240, 255, 0.8)';
-            
-            customDustPool.forEach(nodeDust => {
-                quaternaryCanvasCtx.globalAlpha = nodeDust.opacityValue;
-                quaternaryCanvasCtx.beginPath();
-                quaternaryCanvasCtx.arc(nodeDust.x, nodeDust.y, nodeDust.radius, 0, Math.PI * 2);
-                quaternaryCanvasCtx.fill();
-                
-                nodeDust.x += nodeDust.driftSpeedX;
-                nodeDust.y += nodeDust.driftSpeedY;
-                
-                if (nodeDust.x < 0) nodeDust.x = tertiaryCanvasInstance.width;
-                if (nodeDust.x > tertiaryCanvasInstance.width) nodeDust.x = 0;
-                if (nodeDust.y < 0) nodeDust.y = tertiaryCanvasInstance.height;
-                if (nodeDust.y > tertiaryCanvasInstance.height) nodeDust.y = 0;
-            });
-
-            requestAnimationFrame(structuralRenderEcosystemLoop);
-        }
-
-        window.addEventListener('resize', structuralRecomputeViewports);
-        structuralRecomputeViewports();
-        structuralRenderEcosystemLoop();
-
-        /* Advanced Mainframe Typewriter Engine Script */
-        const targetedMatrixStrings = ["Frontend Architect Core.", "Python System Planner.", "Cyber Space Operator."];
-        let indexStringCounter = 0;
-        let indexCharacterCounter = 0;
-        let executionEraseState = false;
-        const domTargetNode = document.getElementById('hero-typewriter-target');
-        let operationVelocitySpeed = 100;
-
-        function executionCoreTypewriterEngine() {
-            const evaluationFullString = targetedMatrixStrings[indexStringCounter];
-            
-            if (executionEraseState) {
-                domTargetNode.textContent = evaluationFullString.substring(0, indexCharacterCounter - 1);
-                indexCharacterCounter--;
-                operationVelocitySpeed = 40;
-            } else {
-                domTargetNode.textContent = evaluationFullString.substring(0, indexCharacterCounter + 1);
-                indexCharacterCounter++;
-                operationVelocitySpeed = 120;
-            }
-
-            if (!executionEraseState && indexCharacterCounter === evaluationFullString.length) {
-                executionEraseState = true;
-                operationVelocitySpeed = 2400;
-            } else if (executionEraseState && indexCharacterCounter === 0) {
-                executionEraseState = false;
-                indexStringCounter = (indexStringCounter + 1) % targetedMatrixStrings.length;
-                operationVelocitySpeed = 450;
-            }
-
-            setTimeout(executionCoreTypewriterEngine, operationVelocitySpeed);
-        }
-
-        setTimeout(executionCoreTypewriterEngine, 2600);
-
-        /* Granular Scroll Viewport Interaction Detector Script */
-        const batchRevealNodes = document.querySelectorAll('.scroll-reveal-matrix-box');
-
-        function assessViewportIntersectionBoundaries() {
-            const calculatedTriggerPoint = window.innerHeight * 0.88;
-            
-            batchRevealNodes.forEach(singleBlock => {
-                const nodeTopBoundaryPosition = singleBlock.getBoundingClientRect().top;
-                if (nodeTopBoundaryPosition < calculatedTriggerPoint) {
-                    singleBlock.classList.add('system-visible');
-                }
-            });
-        }
-
-        window.addEventListener('scroll', assessViewportIntersectionBoundaries);
-        assessViewportIntersectionBoundaries();
-
-        /* Diagnostic Boot Loader Subsystem Logic Script */
-        const terminalLoaderAnchor = document.getElementById('loader-terminal-anchor');
-        const fluidProgressBarCore = document.getElementById('loader-progress-fluid-bar');
-        
-        const structuralDiagnosticLogs = [
-            ">> INITIALIZING QUANTUM BOOT CORE METADATA...",
-            ">> ATTACHING COMPONENT GRID STACK LAYOUTS...",
-            ">> PAIRING SCHOOL ECOSYSTEM REDIRECT PORTS...",
-            ">> PARSING INTENSIVE HIGH-AESTHETIC CSS NODES...",
-            ">> CONFIGURING 1000+ SEAMLESS SYSTEM ARCHITECTURES...",
-            ">> STATUS: ALL ENGINES DEPLOYED AND READY."
-        ];
-        
-        let pointerLogIdx = 0;
-
-        function runMainframeLoaderTerminalLogs() {
-            if (pointerLogIdx < structuralDiagnosticLogs.length) {
-                const freshRowElement = document.createElement('div');
-                freshRowElement.className = 'loader-log-row' + (pointerLogIdx === structuralDiagnosticLogs.length - 1 ? ' success-node' : '');
-                freshRowElement.innerText = structuralDiagnosticLogs[pointerLogIdx];
-                terminalLoaderAnchor.appendChild(freshRowElement);
-                pointerLogIdx++;
-                setTimeout(runMainframeLoaderTerminalLogs, 400);
-            }
-        }
-
-        runMainframeLoaderTerminalLogs();
-
-        let structuralProgressPercentage = 0;
-        const systemBootTimerInterval = setInterval(() => {
-            structuralProgressPercentage += Math.random() * 6;
-            if (structuralProgressPercentage >= 100) {
-                structuralProgressPercentage = 100;
-                clearInterval(systemBootTimerInterval);
-                
-                setTimeout(() => {
-                    const mainframeLoaderScreenNode = document.getElementById('cyber-mainframe-loader');
-                    mainframeLoaderScreenNode.style.opacity = '0';
-                    mainframeLoaderScreenNode.style.visibility = 'hidden';
-                }, 2400);
-            }
-            fluidProgressBarCore.style.width = structuralProgressPercentage + '%';
-        }, 120);
-
-        setTimeout(() => {
-            const componentOutputTarget = document.getElementById('terminal-chassis-output-target');
-            if (componentOutputTarget) componentOutputTarget.style.display = 'block';
-        }, 4500);
-
-        /* Micro Interactive Progress Filling Logic Control Script */
-        document.querySelectorAll('.knowledge-interactive-card').forEach(individualNode => {
-            const readingTargetPercentValue = individualNode.getAttribute('data-target-percentage');
-            const targetedInteriorBarFill = individualNode.querySelector('.quantum-card-progress-bar');
-            
-            if (targetedInteriorBarFill) {
-                targetedInteriorBarFill.style.width = readingTargetPercentValue + '%';
+        // Menu ke bahar kahin bhi touch karne par menu band ho jayega
+        document.addEventListener('click', (e) => {
+            if (!navLinks.contains(e.target) && !menuToggle.contains(e.target)) {
+                navLinks.classList.remove('mobile-active');
+                menuToggle.textContent = '☰';
             }
         });
+
+        // Kisi link par click karte hi menu automatic close ho jayega
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('mobile-active');
+                menuToggle.textContent = '☰';
+            });
+        });
+
+        // Scroll animations
+        const observerOptions = { threshold: 0.1 };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.scroll-reveal').forEach(el => {
+            observer.observe(el);
+        });
+
+        // 3D Card Hover Animation (Only Desktop)
+        const desktopQuery = window.matchMedia('(min-width: 769px)');
+        
+        function handleTilt(e) {
+            const card = e.currentTarget;
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left - rect.width / 2;
+            const y = e.clientY - rect.top - rect.height / 2;
+            card.style.transform = `translateY(-4px) rotateX(${-y / 50}deg) rotateY(${x / 50}deg)`;
+        }
+
+        function resetTilt(e) {
+            e.currentTarget.style.transform = 'translateY(0px) rotateX(0deg) rotateY(0deg)';
+        }
+
+        function toggleTiltListeners(isDesktop) {
+            const cards = document.querySelectorAll('.glass-card, .grid-card, .kb-card, .service-card');
+            cards.forEach(card => {
+                if (isDesktop) {
+                    card.addEventListener('mousemove', handleTilt);
+                    card.addEventListener('mouseleave', resetTilt);
+                } else {
+                    card.removeEventListener('mousemove', handleTilt);
+                    card.removeEventListener('mouseleave', resetTilt);
+                    card.style.transform = 'none';
+                }
+            });
+        }
+
+        desktopQuery.addEventListener('change', (e) => toggleTiltListeners(e.matches));
+        toggleTiltListeners(desktopQuery.matches);
     </script>
-</body>
+    </body>
 </html>
