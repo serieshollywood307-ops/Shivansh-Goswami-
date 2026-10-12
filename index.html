@@ -4,31 +4,55 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Shivansh Goswami | Tech Enthusiast </title>
+    <title>Shivansh Goswami | Cybersecurity &amp; Web Developer</title>
+    <meta name="description" content="Explore Shivansh Goswami’s cybersecurity, networking, Python, Linux, and web development interests, learning roadmap, and featured student projects.">
+    <link rel="canonical" href="https://serieshollywood307-ops.github.io/Shivansh-Goswami-/">
     <!-- Google Site Verification Node -->
     <meta name="google-site-verification" content="61ZyUxITd7h9pR3Zm5EdDO8fr0B18yj_NFmU7CuebDk" />
 <!-- Favicon -->
     <link rel="icon" href="1781312967588.png" type="image/png">
     
-    <!-- Open Graph Image (Ye Google aur Social Media ke liye hai) -->
-    <meta property="og:image" content="1781312967588.png">
-    <!-- Google Site Name Optimization -->
-<meta property="og:site_name" content="Shivansh Goswami">
-<meta name="twitter:title" content="Shivansh Goswami | Tech Enthusiast">
-    <!-- Google Search Site Name Specification -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  "name": "Shivansh Goswami",
-  "url": "https://serieshollywood307-ops.github.io/"
-}
-</script>
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Shivansh Goswami | Cybersecurity &amp; Web Developer">
+    <meta property="og:description" content="Explore Shivansh Goswami’s cybersecurity, networking, Python, Linux, and web development interests, learning roadmap, and featured student projects.">
+    <meta property="og:url" content="https://serieshollywood307-ops.github.io/Shivansh-Goswami-/">
+    <meta property="og:site_name" content="Shivansh Goswami">
+    <meta property="og:image" content="https://serieshollywood307-ops.github.io/Shivansh-Goswami-/1781312967588.png">
+    <meta property="og:image:alt" content="Shivansh Goswami portfolio preview">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Shivansh Goswami | Cybersecurity &amp; Web Developer">
+    <meta name="twitter:description" content="Cybersecurity, networking, Python, Linux, and web development interests, projects, and learning roadmap.">
+    <meta name="twitter:image" content="https://serieshollywood307-ops.github.io/Shivansh-Goswami-/1781312967588.png">
+    <!-- Structured data describes the public portfolio and its owner. -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebSite",
+          "name": "Shivansh Goswami",
+          "url": "https://serieshollywood307-ops.github.io/Shivansh-Goswami-/",
+          "author": { "@id": "https://serieshollywood307-ops.github.io/Shivansh-Goswami-/#person" }
+        },
+        {
+          "@type": "Person",
+          "@id": "https://serieshollywood307-ops.github.io/Shivansh-Goswami-/#person",
+          "name": "Shivansh Goswami",
+          "url": "https://serieshollywood307-ops.github.io/Shivansh-Goswami-/",
+          "sameAs": [
+            "https://github.com/serieshollywood307-ops",
+            "https://www.instagram.com/shivansh_goswami_75/"
+          ],
+          "knowsAbout": ["Cybersecurity", "Computer networking", "Python", "Linux", "Web development"]
+        }
+      ]
+    }
+    </script>
     
  <!-- External Asset Matrix -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&family=Fira+Code:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
         <style>
         :root {
@@ -123,15 +147,14 @@
 
         /* Scroll Reveal Animation */
         .scroll-reveal {
-            opacity: 0;
-            transform: translateY(35px);
-            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            opacity: 1;
+            transform: none;
             scroll-margin-top: 100px;
         }
 
         .scroll-reveal.active {
             opacity: 1;
-            transform: translateY(0);
+            transform: none;
         }
 
         /* Header Navigation */
@@ -696,11 +719,13 @@
                 display: block;
             }
 
-                .nav-links { 
+            .nav-links {
                 position: absolute;
                 top: 65px;
                 right: 6%;
-                width: 155px; /* Compact & slim corner width */
+                width: min(90vw, 280px);
+                max-height: calc(100svh - 90px);
+                overflow-y: auto;
                 
                 /* Pure Frosty White Background */
                 background: rgba(255, 255, 255, 0.88);
@@ -709,7 +734,7 @@
                 
                 flex-direction: column;
                 align-items: stretch;
-                gap: 3px;
+                gap: 4px;
                 padding: 8px;
                 
                 /* Sharp Icy-Blue Glowing Glass Border & Shadow */
@@ -728,10 +753,10 @@
             }
 
             .nav-links a {
-                font-size: 0.8rem;
+                font-size: 0.9rem;
                 font-weight: 700;
                 color: #0f172a;
-                padding: 8px 12px;
+                padding: 10px 12px;
                 width: 100%;
                 text-align: left;
                 border-radius: 10px;
@@ -750,7 +775,7 @@
 body { transition: background .45s ease, color .35s ease; }
 .aura-blob { transition: background .5s ease, opacity .4s ease; }
 body[data-theme="liquid"] {
-  background:linear-gradient(145deg,rgba(4,14,36,.16),rgba(4,19,49,.34)),url("liquid-glass-background.webp") center center / cover fixed;
+  background:radial-gradient(ellipse at 12% 8%,rgba(14,165,233,.23),transparent 38%),radial-gradient(ellipse at 88% 80%,rgba(99,102,241,.2),transparent 42%),linear-gradient(145deg,#071426,#0d2142 60%,#111632);
   color:#e9f6ff;
 }
 body[data-theme="liquid"] header { background:rgba(5,20,48,.76); border-bottom:1px solid rgba(123,220,255,.22); box-shadow:0 8px 30px rgba(0,0,0,.18); }
@@ -886,8 +911,23 @@ body[data-theme="clay"] .style-trigger, body[data-theme="clay"] .style-menu { co
 body[data-theme="clay"] .style-option { color:#17314d; }
 body[data-theme="clay"] .style-option:hover, body[data-theme="clay"] .style-option[aria-checked="true"] { color:#087eae; background:rgba(104,209,231,.16); }
 body[data-theme="liquid"] .style-trigger, body[data-theme="3d"] .style-trigger { background:linear-gradient(125deg,rgba(5,50,95,.94),rgba(54,46,120,.94)); border-color:rgba(124,222,255,.66); }
-@media(max-width:768px) { .style-switcher { right:14px; bottom:14px; } .style-trigger { padding:11px 14px; } .style-menu { width:210px; } }
-@media(prefers-reduced-motion:reduce) { *,*::before,*::after { animation-duration:.01ms!important; transition-duration:.01ms!important; scroll-behavior:auto!important; } }
+        @media(max-width:768px) { .style-switcher { right:14px; bottom:14px; } .style-trigger { padding:11px 14px; } .style-menu { width:210px; } }
+        @media(max-width:768px) {
+            .mobile-menu-btn { min-width:44px; min-height:44px; border-radius:12px; }
+            .nav-links { background:rgba(7,24,55,.97); border-color:rgba(56,189,248,.6); }
+            body[data-theme] .nav-links a { color:#f2f8ff; }
+            body[data-theme] .nav-links a:hover,
+            body[data-theme] .nav-links a:focus-visible { background:rgba(56,189,248,.16); color:#67e5ff; }
+            .nav-links a:focus-visible { outline:2px solid #67e5ff; outline-offset:1px; }
+        }
+        @media(max-width:420px) {
+            .main-container { margin:100px auto 56px; padding:0 16px; gap:40px; }
+            .glass-card { padding:20px; }
+            .services-grid, .grid-3d, .contact-grid { grid-template-columns:minmax(0,1fr); }
+            .stats-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+            .style-switcher { right:12px; bottom:12px; }
+        }
+        @media(prefers-reduced-motion:reduce) { *,*::before,*::after { animation-duration:.01ms!important; transition-duration:.01ms!important; scroll-behavior:auto!important; } }
 
 </style>
 </head>
@@ -904,8 +944,8 @@ body[data-theme="liquid"] .style-trigger, body[data-theme="3d"] .style-trigger {
     <header>
         <div class="nav-wrapper">
             <div class="nav-logo">SHIVANSH<span>-GIRI</span></div>
-            <button class="mobile-menu-btn" id="menuToggle" aria-label="Toggle Menu">☰</button>
-            <div class="nav-links" id="navLinks">
+            <button class="mobile-menu-btn" id="menuToggle" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="navLinks">☰</button>
+            <nav class="nav-links" id="navLinks" aria-label="Main navigation">
                 <a href="#about">ABOUT</a>
                 <a href="#terminal">TERMINAL</a>
                 <a href="#toolkit">TOOLKIT</a>
@@ -914,7 +954,7 @@ body[data-theme="liquid"] .style-trigger, body[data-theme="3d"] .style-trigger {
                 <a href="#knowledge">KNOWLEDGE</a>
                 <a href="#projects">PROJECTS</a>
                 <a href="#contact">CONNECT</a>
-            </div>
+            </nav>
         </div>
     </header>
 
@@ -930,7 +970,7 @@ body[data-theme="liquid"] .style-trigger, body[data-theme="3d"] .style-trigger {
         <button class="style-trigger" id="styleTrigger" type="button" aria-haspopup="menu" aria-expanded="false" aria-controls="styleMenu"><span aria-hidden="true">◈</span> Design <span aria-hidden="true">⌃</span></button>
     </aside>
 
-    <div class="main-container">
+    <main class="main-container">
         
         <!-- Hero Section -->
         <div class="glass-card scroll-reveal" id="about">
@@ -1149,7 +1189,7 @@ body[data-theme="liquid"] .style-trigger, body[data-theme="3d"] .style-trigger {
             </div>
         </div>
 
-    </div>
+    </main>
 
     <footer>
         <p>© 2026 Shivansh Goswami | Chief Architect & Cybersecurity Specialist</p>
@@ -1160,27 +1200,38 @@ body[data-theme="liquid"] .style-trigger, body[data-theme="3d"] .style-trigger {
         const menuToggle = document.getElementById('menuToggle');
         const navLinks = document.getElementById('navLinks');
 
+        function setMenuOpen(open) {
+            navLinks.classList.toggle('mobile-active', open);
+            menuToggle.textContent = open ? '✕' : '☰';
+            menuToggle.setAttribute('aria-expanded', String(open));
+            menuToggle.setAttribute('aria-label', open ? 'Close navigation menu' : 'Open navigation menu');
+        }
+
         // Toggle button click logic
         menuToggle.addEventListener('click', (e) => {
             e.stopPropagation();
-            navLinks.classList.toggle('mobile-active');
-            menuToggle.textContent = navLinks.classList.contains('mobile-active') ? '✕' : '☰';
+            setMenuOpen(!navLinks.classList.contains('mobile-active'));
         });
 
         // Menu ke bahar kahin bhi touch karne par menu band ho jayega
         document.addEventListener('click', (e) => {
             if (!navLinks.contains(e.target) && !menuToggle.contains(e.target)) {
-                navLinks.classList.remove('mobile-active');
-                menuToggle.textContent = '☰';
+                setMenuOpen(false);
             }
         });
 
         // Kisi link par click karte hi menu automatic close ho jayega
         document.querySelectorAll('.nav-links a').forEach(link => {
             link.addEventListener('click', () => {
-                navLinks.classList.remove('mobile-active');
-                menuToggle.textContent = '☰';
+                setMenuOpen(false);
             });
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && navLinks.classList.contains('mobile-active')) {
+                setMenuOpen(false);
+                menuToggle.focus();
+            }
         });
 
         // Scroll animations
